@@ -2,21 +2,9 @@
 using System.Collections;
 
 public class BallMovement : MonoBehaviour {
-	
-	public int startSpeed;
-	
-	public GameObject racquetLeft, racquetRight;
+    public int startSpeed;
 
-	void Start () {
-		
-		GetComponent<Rigidbody2D>().velocity = Vector2.right * startSpeed;
-	}
-	
-	void Update () {
-		//send off in random direction at set velocity
-		
-		
-	}
+    public GameObject racquetLeft, racquetRight;
 	
 	//Check which section of racquet the ball hits
 	float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight) {

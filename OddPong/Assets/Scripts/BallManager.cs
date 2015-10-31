@@ -3,6 +3,8 @@
 public class BallManager : MonoBehaviour
 {
     public GameObject ball;
+    public GameObject racquetLeft;
+    public GameObject racquetRight;
 
     public void SpawnBall(Vector3 position, Vector3 startingVelocity)
     {
@@ -10,7 +12,6 @@ public class BallManager : MonoBehaviour
             ", startingVelocity " + startingVelocity.ToString());
 
         var spawned = Instantiate(ball);
-        spawned.tag = "Ball"; // TODO: This should be on the prefab.
         var rigid = spawned.GetComponent<Rigidbody2D>();
         if (rigid)
         {
@@ -20,6 +21,16 @@ public class BallManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Spawned ball but couldn't find rigidbody component.");
+        }
+        var ballMovement = spawned.GetComponent<BallMovement>();
+        if (ballMovement)
+        {
+            ballMovement.racquetLeft = racquetLeft;
+            ballMovement.racquetRight = racquetRight;
+        }
+        else
+        {
+            Debug.LogWarning("Spawned ball but couldn't find ball movement component.");
         }
     }
 

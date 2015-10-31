@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     private Player p1Controller;
     private Player p2Controller;
 
-    public GameObject m_ball;
-    public Transform m_ballPos;
+    public BallManager m_ballManager;
+    public float m_initialBallSpeed;
 
     public int m_maxScore;
     public Text m_winnerText;
@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
         p2Controller.reset();
 
         m_winnerText.text = "";
-        m_ball.SetActive(true);
+
+        DoBallSpawn();
         m_coolDown = false;
     }
 
@@ -55,14 +56,24 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Warning player scores with invalid string.");
         }
 
+        m_ballManager.DeleteAllBalls();
         if (p1Controller.m_score >= m_maxScore || p2Controller.m_score >= m_maxScore)
         {
             m_winnerText.text = player + " wins!";
             m_cooldownStart = Time.fixedTime;
             m_coolDown = true;
-            m_ball.SetActive(false);
         }
-        m_ballPos.position = new Vector2(0f, 0f);
+        else
+        {
+            DoBallSpawn();
+        }
+    }
+
+    void DoBallSpawn()
+    {
+        Vector3 spawnPos = new Vector3();
+        Vector3 startingVelocity = Vector2.right * m_initialBallSpeed;
+        m_ballManager.SpawnBall(spawnPos, startingVelocity);
     }
 
     // Update is called once per frame
