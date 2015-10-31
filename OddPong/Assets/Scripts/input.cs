@@ -12,41 +12,41 @@ public class input : MonoBehaviour
 {
     public Rigidbody2D playerBody;
     public float moveSpeed = 0.5f;
-    public bool playerOne;
+    public bool arePlayerOne;
 
     void Start()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is called once per physics update
+    void FixedUpdate()
     {
-        Vector3 velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        float upDown = 0.0f;
 
         // Player 1.
-        if (playerOne)
+        if (arePlayerOne)
         {
             if (Input.GetKey(KeyCode.W))
             {
-                velocity.y = moveSpeed;
+                upDown = 1.0f;
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                velocity.y = -moveSpeed;
+                upDown = -1.0f;
             }
         }
         else
         { // Player 2.
             if (Input.GetKey(KeyCode.I))
             {
-                velocity.y = moveSpeed;
+                upDown = 1.0f;
             }
             else if (Input.GetKey(KeyCode.K))
             {
-                velocity.y = -moveSpeed;
+                upDown = -1.0f;
             }
         }
-        playerBody.velocity = velocity;
+        playerBody.AddForce(new Vector3(0.0f, upDown, 0.0f) * moveSpeed);
     }
 }

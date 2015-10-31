@@ -316,7 +316,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 530603489}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -355,8 +355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 530603491}
-  moveSpeed: 150
-  playerOne: 0
+  moveSpeed: 5000
+  arePlayerOne: 0
 --- !u!61 &530603495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606118405}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -461,8 +461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 606118407}
-  moveSpeed: 150
-  playerOne: 1
+  moveSpeed: 5000
+  arePlayerOne: 1
 --- !u!61 &606118411
 BoxCollider2D:
   m_ObjectHideFlags: 0
