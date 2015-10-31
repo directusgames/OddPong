@@ -616,7 +616,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '#####'
+  m_Text: 0
 --- !u!222 &824156783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -746,7 +746,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1066929440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.29999995, y: -24, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -829,7 +829,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '#####'
+  m_Text: 0
 --- !u!222 &1139763945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -859,15 +859,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 1470013588}
   - 33: {fileID: 1470013587}
-  - 65: {fileID: 1470013586}
   - 23: {fileID: 1470013585}
+  - 61: {fileID: 1470013586}
   m_Layer: 0
   m_Name: ScoreBarrier (right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1470013585
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -892,18 +892,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1470013586
-BoxCollider:
+--- !u!61 &1470013586
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1470013584}
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
 --- !u!33 &1470013587
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -918,8 +919,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1470013584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 363, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 400, z: 1}
   m_Children: []
   m_Father: {fileID: 1542073969}
   m_RootOrder: 1
@@ -935,6 +936,7 @@ GameObject:
   - 92: {fileID: 1480861400}
   - 124: {fileID: 1480861399}
   - 81: {fileID: 1480861398}
+  - 114: {fileID: 1480861403}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1010,6 +1012,23 @@ Transform:
   - {fileID: 885929759}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1480861403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1480861397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5396ebc052114964e9933f96e6106bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBarrier: {fileID: 1551955898}
+  rightBarrier: {fileID: 1470013586}
+  ballPos: {fileID: 1066929444}
+  ballBody: {fileID: 1066929443}
+  player1Score: {fileID: 824156782}
+  player2Score: {fileID: 1139763944}
 --- !u!1 &1534002699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,15 +1143,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 1551955900}
   - 33: {fileID: 1551955899}
-  - 65: {fileID: 1551955898}
   - 23: {fileID: 1551955897}
+  - 61: {fileID: 1551955898}
   m_Layer: 0
   m_Name: ScoreBarrier (left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1551955897
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1157,18 +1176,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1551955898
-BoxCollider:
+--- !u!61 &1551955898
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1551955896}
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
 --- !u!33 &1551955899
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1183,8 +1203,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1551955896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 207, z: 0}
-  m_LocalScale: {x: 710, y: 15, z: 1}
+  m_LocalPosition: {x: -363, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 400, z: 1}
   m_Children: []
   m_Father: {fileID: 1542073969}
   m_RootOrder: 0
