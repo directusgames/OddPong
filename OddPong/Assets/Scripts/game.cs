@@ -30,9 +30,7 @@ public class game : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (coolDown) {
-            Debug.Log(System.Math.Abs(cooldownStart - Time.fixedTime));
             if (System.Math.Abs(cooldownStart - Time.fixedTime) >= cooldownTime) {
-                Debug.Log("setting!");
                 ball.SetActive(true);
                 coolDown = false;
                 player1Score.text = "0";
