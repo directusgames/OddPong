@@ -275,12 +275,13 @@ GameObject:
   - 4: {fileID: 530603493}
   - 33: {fileID: 530603492}
   - 23: {fileID: 530603490}
-  - 114: {fileID: 530603494}
   - 61: {fileID: 530603495}
   - 50: {fileID: 530603491}
+  - 114: {fileID: 530603494}
+  - 114: {fileID: 530603496}
   m_Layer: 0
-  m_Name: Player2
-  m_TagString: Player
+  m_Name: PlayerTwo
+  m_TagString: PlayerTwo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,6 +372,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &530603496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 530603489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5adcce192ad96a489e55d7b8e28b9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_score: 0
+  m_scoreOutput: {fileID: 1139763944}
 --- !u!1 &606118405
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,12 +395,13 @@ GameObject:
   - 4: {fileID: 606118409}
   - 33: {fileID: 606118408}
   - 23: {fileID: 606118406}
-  - 114: {fileID: 606118410}
   - 61: {fileID: 606118411}
   - 50: {fileID: 606118407}
+  - 114: {fileID: 606118410}
+  - 114: {fileID: 606118412}
   m_Layer: 0
-  m_Name: Player1
-  m_TagString: Player
+  m_Name: PlayerOne
+  m_TagString: PlayerOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 606118407}
   moveSpeed: 5000
-  arePlayerOne: 1
+  arePlayerOne: 0
 --- !u!61 &606118411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -477,6 +492,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &606118412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 606118405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5adcce192ad96a489e55d7b8e28b9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_score: 0
+  m_scoreOutput: {fileID: 824156782}
 --- !u!1 &778927840
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e0c870916255f44b330bdba51e1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 50
+  startSpeed: 155
 --- !u!1 &1139763942
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,9 +1002,10 @@ GameObject:
   - 33: {fileID: 1470013587}
   - 23: {fileID: 1470013585}
   - 61: {fileID: 1470013586}
+  - 114: {fileID: 1470013589}
   m_Layer: 0
   m_Name: ScoreBarrier (right)
-  m_TagString: Untagged
+  m_TagString: PlayerOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1037,6 +1066,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1542073969}
   m_RootOrder: 1
+--- !u!114 &1470013589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470013584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecee88f21fc5484d80ae3844ed34667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_barrierObject: {fileID: 1470013584}
+  m_barrier: {fileID: 1470013586}
+  m_playerOne: {fileID: 606118405}
+  m_playerTwo: {fileID: 530603489}
+  m_mainCamera: {fileID: 1480861397}
 --- !u!1 &1480861397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,17 +1181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5396ebc052114964e9933f96e6106bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftBarrier: {fileID: 1551955898}
-  rightBarrier: {fileID: 1470013586}
-  ball: {fileID: 1066929440}
-  ballPos: {fileID: 1066929444}
-  ballBody: {fileID: 1066929443}
-  player1Score: {fileID: 824156782}
-  player2Score: {fileID: 1139763944}
-  winnerText: {fileID: 314837799}
-  maxScore: 10
-  coolDown: 0
-  cooldownTime: 5
+  m_playerOne: {fileID: 606118405}
+  m_playerTwo: {fileID: 530603489}
+  m_ball: {fileID: 1066929440}
+  m_ballPos: {fileID: 1066929444}
+  m_maxScore: 5
+  m_winnerText: {fileID: 314837799}
+  m_coolDown: 0
+  m_cooldownTime: 5
 --- !u!1 &1534002699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,9 +1305,10 @@ GameObject:
   - 33: {fileID: 1551955899}
   - 23: {fileID: 1551955897}
   - 61: {fileID: 1551955898}
+  - 114: {fileID: 1551955901}
   m_Layer: 0
   m_Name: ScoreBarrier (left)
-  m_TagString: Untagged
+  m_TagString: PlayerTwo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1326,6 +1369,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1542073969}
   m_RootOrder: 0
+--- !u!114 &1551955901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1551955896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecee88f21fc5484d80ae3844ed34667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_barrierObject: {fileID: 1551955896}
+  m_barrier: {fileID: 1551955898}
+  m_playerOne: {fileID: 606118405}
+  m_playerTwo: {fileID: 530603489}
+  m_mainCamera: {fileID: 1480861397}
 --- !u!1 &1881379367
 GameObject:
   m_ObjectHideFlags: 0

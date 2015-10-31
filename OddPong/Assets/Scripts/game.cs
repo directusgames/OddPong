@@ -2,65 +2,66 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class game : MonoBehaviour {
-    public BoxCollider2D leftBarrier;
-    public BoxCollider2D rightBarrier;
+public class Game : MonoBehaviour {
+    public GameObject m_playerOne;
+    public GameObject m_playerTwo;
 
-    public GameObject ball;
-    public Transform ballPos;
-    public Rigidbody2D ballBody;
+    private Player p1Controller;
+    private Player p2Controller;
 
-    public Text player1Score;
-    public Text player2Score;
+    public GameObject m_ball;
+    public Transform m_ballPos;
 
-    public Text winnerText;
-    public int maxScore;
+    public int m_maxScore;
+    public Text m_winnerText;
 
-    public bool coolDown;
-    public float cooldownTime;
+    public bool m_coolDown; // Whether in cool down state.
+    public float m_cooldownTime; // Length of game cool down between rounds.
+    private float m_cooldownStart; // Time cool down begun.
+    
+    void Start() {
+        p1Controller = m_playerOne.GetComponent<Player>();
+        p2Controller = m_playerTwo.GetComponent<Player>();
+        resetGame();
+    }
 
-    private float cooldownStart;
+    void resetGame()
+    {
+        // Reset player scores.
+        p1Controller.reset();
+        p2Controller.reset();
 
-    // Use this for initialization
-    void Start () {
-        player1Score.text = "0";
-        player2Score.text = "0";
+        m_winnerText.text = "";
+        m_ball.SetActive(true);
+        m_coolDown = false;
+    }
+
+    public void playerScores(string player) {
+        Debug.Log("Player has scored: " + player);
+        // Could be better.
+        if (player.Equals("PlayerOne")) {
+            p1Controller.incrementScore();
+        } else if (player.Equals("PlayerTwo")) {
+            p2Controller.incrementScore();
+        } else {
+            Debug.LogError("Warning player scores with invalid string.");
+        }
+        
+        if (p1Controller.m_score >= m_maxScore || p2Controller.m_score >= m_maxScore)
+        {
+            m_winnerText.text = player + " wins!";
+            m_cooldownStart = Time.fixedTime;
+            m_coolDown = true;
+            m_ball.SetActive(false);
+        }
+        m_ballPos.position = new Vector2(0f, 0f);
     }
 
     // Update is called once per frame
     void Update() {
-        if (coolDown) {
-            if (System.Math.Abs(cooldownStart - Time.fixedTime) >= cooldownTime) {
-                ball.SetActive(true);
-                coolDown = false;
-                player1Score.text = "0";
-                player2Score.text = "0";
-                winnerText.text = "";
-            }
-        }
-        
-        if (ballBody.IsTouching(leftBarrier)) {
-            // Player 2 scores.
-            player2Score.text = (int.Parse(player2Score.text) + 1).ToString();
-            ballPos.position = new Vector2(0f, 0f);
-        } else if (ballBody.IsTouching(rightBarrier)) {
-            // Player 1 scores.
-            player1Score.text = (int.Parse(player1Score.text) + 1).ToString();
-            ballPos.position = new Vector2(0f, 0f);
-        }
-
-        if (!coolDown) {
-            // Player 1 win condition.
-            if (int.Parse(player1Score.text) >= maxScore) {
-                winnerText.text = "Player 1 wins!";
-                cooldownStart = Time.fixedTime;
-                coolDown = true;
-                ball.SetActive(false);
-            } else if (int.Parse(player2Score.text) >= maxScore) {
-                winnerText.text = "Player 2 wins!";
-                cooldownStart = Time.fixedTime;
-                coolDown = true;
-                ball.SetActive(false);
+        if (m_coolDown) {
+            if (System.Math.Abs(m_cooldownStart - Time.fixedTime) >= m_cooldownTime) {
+                resetGame();
             }
         }
 	}

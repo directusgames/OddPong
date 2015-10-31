@@ -8,10 +8,10 @@ using System.Collections;
  * If there is a controller plugged in, it assumes this is for player 2.
  * Unless we get time for UI/controller->player allocation.
 */
-public class input : MonoBehaviour
+public class UserInput : MonoBehaviour
 {
     public Rigidbody2D playerBody;
-    public float moveSpeed = 0.5f;
+    public float moveSpeed;
     public bool arePlayerOne;
 
     void Start()
