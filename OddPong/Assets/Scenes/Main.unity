@@ -178,56 +178,6 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &189436236
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -12.3999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 35.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11458520, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: racquetLeft
-      value: 
-      objectReference: {fileID: 606118405}
-    - target: {fileID: 11458520, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-      propertyPath: racquetRight
-      value: 
-      objectReference: {fileID: 530603489}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &314837797
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d73a4c16eaf374d8b7d45a04914b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
+  ball: {fileID: 138798, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
+  racquetLeft: {fileID: 606118405}
+  racquetRight: {fileID: 530603489}
 --- !u!4 &827787785
 Transform:
   m_ObjectHideFlags: 0
@@ -855,7 +807,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &885929758
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,64 +908,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 524.900024, y: 100}
   m_Pivot: {x: 0, y: .5}
---- !u!1 &1066929440 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 138798, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-  m_PrefabInternal: {fileID: 189436236}
---- !u!50 &1066929443 stripped
-Rigidbody2D:
-  m_PrefabParentObject: {fileID: 5092042, guid: 6caad25e2ee85f94c8ddb9288ff308b2,
-    type: 2}
-  m_PrefabInternal: {fileID: 189436236}
---- !u!4 &1066929444 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
-  m_PrefabInternal: {fileID: 189436236}
---- !u!96 &1066929446
-TrailRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1066929440}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 99dce9085bbb2c44e9fd4b8b5091625d, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Time: .5
-  m_StartWidth: 20
-  m_EndWidth: 1
-  m_Colors:
-    m_Color[0]:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_Color[1]:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_Color[2]:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_Color[3]:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_Color[4]:
-      serializedVersion: 2
-      rgba: 16777215
-  m_MinVertexDistance: .100000001
-  startSpeed: 50
 --- !u!1 &1139763942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,8 +1189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerOne: {fileID: 606118405}
   m_playerTwo: {fileID: 530603489}
-  m_ball: {fileID: 1066929440}
-  m_ballPos: {fileID: 1066929444}
+  m_ballManager: {fileID: 827787784}
+  m_initialBallSpeed: 350
   m_maxScore: 5
   m_winnerText: {fileID: 314837799}
   m_coolDown: 0
@@ -1421,7 +1315,7 @@ Transform:
   - {fileID: 2106671753}
   - {fileID: 1534002700}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1551955896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,7 +1435,7 @@ Transform:
   - {fileID: 606118409}
   - {fileID: 530603493}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &2106671749
 GameObject:
   m_ObjectHideFlags: 0
