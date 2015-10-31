@@ -5,21 +5,48 @@ public class BallMovement : MonoBehaviour {
 	
 	public int startSpeed;
 	
-	// Use this for initialization
+	public GameObject racquetLeft, racquetRight;
+
 	void Start () {
 		
-		float rotation = Random.Range (0,360);		
-		Vector3 rotationVec = new Vector3(0,0,rotation);
-		transform.rotation = Quaternion.Euler(rotationVec);
-		gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 5000);
+		GetComponent<Rigidbody2D>().velocity = Vector2.right * startSpeed;
+	}
+	
+	void Update () {
+		//send off in random direction at set velocity
+		
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		//send off in random direction at set velocity
+	//Check which section of racquet the ball hits
+	float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight) {
+		
+		//1 = top of paddle
+		//2 = middle of paddle
+		//3 = bottom of paddle
+		return (ballPos.y - racketPos.y) / racketHeight;
+	}
 	
+	void OnCollisionEnter2D(Collision2D col) {
 		
+		if (col.gameObject.name == racquetLeft.name) {
 		
+			float y = hitFactor(transform.position, col.transform.position, col.collider.bounds.size.y);
+			
+			Vector2 dir = new Vector2(1, y).normalized;
+			
+			GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
+		}
+		
+		if (col.gameObject.name == racquetRight.name) {
+
+			float y = hitFactor(transform.position,
+			                    col.transform.position,
+			                    col.collider.bounds.size.y);
+			
+			Vector2 dir = new Vector2(-1, y).normalized;
+			
+			GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
+		}
 	}
 }
