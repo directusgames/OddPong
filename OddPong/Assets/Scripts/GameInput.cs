@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameInput : MonoBehaviour {
+public class GameInput : MonoBehaviour
+{
     public GameObject playerOne;
     public GameObject playerTwo;
-
-    public GameObject ball;
-    private Rigidbody2D ballBody;
-    private BallMovement ballScript;
-    private Vector3 tempVeloc;
-    private float tempAngular;
 
     public AudioSource bgMusic;
 
@@ -18,26 +13,32 @@ public class GameInput : MonoBehaviour {
 
     public bool paused;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         paused = false;
         p1Input = playerOne.GetComponent<UserInput>();
         p2Input = playerTwo.GetComponent<UserInput>();
-        ballScript = ball.GetComponent<BallMovement>();
-        ballBody = ball.GetComponent<Rigidbody2D>();
     }
 
-    void pause()
+    void Pause()
     {
         if (!paused) // Pause.
         {
             p1Input.enabled = false;
             p2Input.enabled = false;
             bgMusic.Pause();
-            ballScript.enabled = false;
-            tempVeloc = ballBody.velocity;
-            tempAngular = ballBody.angularVelocity;
-            ballBody.isKinematic = true;
+
+            var balls = GameObject.FindGameObjectsWithTag("Ball");
+            foreach (var ball in balls)
+            {
+                var movement = ball.GetComponent<BallMovement>();
+                if (movement)
+                {
+                    movement.Freeze();
+                }
+            }
+
             paused = true;
         }
         else // Un-pause.
@@ -45,17 +46,26 @@ public class GameInput : MonoBehaviour {
             p1Input.enabled = true;
             p2Input.enabled = true;
             bgMusic.Play();
-            ballScript.enabled = true;
-            ballBody.isKinematic = false;
-            ballBody.velocity = tempVeloc;
-            ballBody.angularVelocity = tempAngular;
+
+            var balls = GameObject.FindGameObjectsWithTag("Ball");
+            foreach (var ball in balls)
+            {
+                var movement = ball.GetComponent<BallMovement>();
+                if (movement)
+                {
+                    movement.Thaw();
+                }
+            }
+
             paused = false;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             // TODO:
             // - 1) Pause.
             // - 2) Confirm with user.
@@ -63,8 +73,9 @@ public class GameInput : MonoBehaviour {
             // - 4) If confirm, Application.Quit().
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.P)) {
-            pause();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Pause();
         }
-	}
+    }
 }
