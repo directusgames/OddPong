@@ -243,7 +243,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player X wins!
+  m_Text: 
 --- !u!222 &314837800
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1025,10 +1025,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBarrier: {fileID: 1551955898}
   rightBarrier: {fileID: 1470013586}
+  ball: {fileID: 1066929440}
   ballPos: {fileID: 1066929444}
   ballBody: {fileID: 1066929443}
   player1Score: {fileID: 824156782}
   player2Score: {fileID: 1139763944}
+  winnerText: {fileID: 314837799}
+  maxScore: 1
+  coolDown: 0
+  cooldownTime: 5
 --- !u!1 &1534002699
 GameObject:
   m_ObjectHideFlags: 0
