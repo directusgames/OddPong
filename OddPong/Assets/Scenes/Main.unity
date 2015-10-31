@@ -187,11 +187,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.3999996
       objectReference: {fileID: 0}
     - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 35.5
       objectReference: {fileID: 0}
     - target: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -801,6 +801,51 @@ Rigidbody2D:
 Transform:
   m_PrefabParentObject: {fileID: 485968, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
   m_PrefabInternal: {fileID: 189436236}
+--- !u!96 &1066929446
+TrailRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1066929440}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: .5
+  m_StartWidth: 20
+  m_EndWidth: 1
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: .100000001
+  m_Autodestruct: 0
 --- !u!1 &1139763942
 GameObject:
   m_ObjectHideFlags: 0
