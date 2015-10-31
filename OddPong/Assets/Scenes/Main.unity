@@ -358,7 +358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 530603491}
   moveSpeed: 5000
-  arePlayerOne: 0
+  moveUp: 105
+  moveDown: 107
 --- !u!61 &530603495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -478,7 +479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 606118407}
   moveSpeed: 5000
-  arePlayerOne: 0
+  moveUp: 119
+  moveDown: 115
 --- !u!61 &606118411
 BoxCollider2D:
   m_ObjectHideFlags: 0
