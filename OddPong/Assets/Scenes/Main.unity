@@ -1099,6 +1099,7 @@ GameObject:
   - 124: {fileID: 1480861399}
   - 81: {fileID: 1480861398}
   - 114: {fileID: 1480861403}
+  - 114: {fileID: 1480861404}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1194,6 +1195,22 @@ MonoBehaviour:
   m_winnerText: {fileID: 314837799}
   m_coolDown: 0
   m_cooldownTime: 5
+--- !u!114 &1480861404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1480861397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ed11ba9a2ed294d992c6a3d552cf1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOne: {fileID: 606118405}
+  playerTwo: {fileID: 530603489}
+  ball: {fileID: 1066929440}
+  bgMusic: {fileID: 375653354}
+  paused: 0
 --- !u!1 &1534002699
 GameObject:
   m_ObjectHideFlags: 0
