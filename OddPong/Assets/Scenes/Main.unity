@@ -357,7 +357,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 530603491}
   moveSpeed: 5000
-  arePlayerOne: 0
+  moveUp: 105
+  moveDown: 107
 --- !u!61 &530603495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -463,7 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 606118407}
   moveSpeed: 5000
-  arePlayerOne: 1
+  moveUp: 119
+  moveDown: 115
 --- !u!61 &606118411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -638,6 +640,46 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!1 &827787783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 827787785}
+  - 114: {fileID: 827787784}
+  m_Layer: 0
+  m_Name: BallManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &827787784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 827787783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d73a4c16eaf374d8b7d45a04914b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 0}
+--- !u!4 &827787785
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 827787783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 321.760529, y: 165.390869, z: -1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &885929758
 GameObject:
   m_ObjectHideFlags: 0
