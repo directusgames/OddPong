@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class BallManager : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class BallManager : MonoBehaviour
         Debug.Log("Spawning ball in position " + position.ToString() +
             ", startingVelocity " + startingVelocity.ToString());
 
-        var spawned = (GameObject)Instantiate(ball);
+        var spawned = Instantiate(ball);
         spawned.tag = "Ball"; // TODO: This should be on the prefab.
         var rigid = spawned.GetComponent<Rigidbody2D>();
         if (rigid)
