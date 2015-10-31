@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Game : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject m_playerOne;
     public GameObject m_playerTwo;
