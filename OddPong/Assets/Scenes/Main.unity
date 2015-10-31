@@ -1031,7 +1031,7 @@ MonoBehaviour:
   player1Score: {fileID: 824156782}
   player2Score: {fileID: 1139763944}
   winnerText: {fileID: 314837799}
-  maxScore: 1
+  maxScore: 10
   coolDown: 0
   cooldownTime: 5
 --- !u!1 &1534002699
