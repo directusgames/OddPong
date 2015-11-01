@@ -7,14 +7,9 @@ public class GravityEffectController : MonoBehaviour {
 	public float fadeTime;
 	public float alphaVal;
 	
-	public GameObject magnet;
-	
 	private float currentAlpha;
 	private Color baseColor;
 	
-
-
-
 	// Use this for initialization
 	void Start () {
 		
@@ -38,7 +33,6 @@ public class GravityEffectController : MonoBehaviour {
 	public void EffectOff()
 	{
 		InvokeRepeating("FadeOut",0,fadeTime);
-		magnet.SetActive(false);
 	}
 	
 	void FadeIn()
@@ -51,7 +45,6 @@ public class GravityEffectController : MonoBehaviour {
 		else
 		{
 			CancelInvoke("FadeIn");
-			magnet.SetActive(true);
 		}
 	}
 	
