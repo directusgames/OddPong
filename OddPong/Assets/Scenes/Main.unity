@@ -2143,7 +2143,6 @@ MonoBehaviour:
   m_initialBallSpeed: 350
   m_maxScore: 5
   m_outputText: {fileID: 314837799}
-  m_gameInput: {fileID: 1480861404}
   m_startGame: 0
   m_matchCooldown: 0
   m_matchCooldownLength: 5

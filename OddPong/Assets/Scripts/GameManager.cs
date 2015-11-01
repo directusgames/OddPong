@@ -19,9 +19,6 @@ public class GameManager : MonoBehaviour
     public int m_maxScore;
     public Text m_outputText;
 
-    // Pausing game during pause menu.
-    public GameInput m_gameInput;
-
     // public int m_startCounter = 3;
     public bool m_startGame;
 
@@ -106,29 +103,25 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // If not in pause menu.
-            if (!m_gameInput.showingPauseMenu)
+            if (!m_matchCooldown) // Game is ongoing.
             {
-                if (!m_matchCooldown) // Game is ongoing.
+                if (m_roundCooldown) // Round is in cooldown.
                 {
-                    if (m_roundCooldown) // Round is in cooldown.
+                    var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
+                    if (roundDiff >= m_roundCooldownLength)
                     {
-                        var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
-                        if (roundDiff >= m_roundCooldownLength)
-                        {
-                            resetRound();
-                            m_roundCooldown = false;
-                        }
+                        resetRound();
+                        m_roundCooldown = false;
                     }
                 }
-                else // Game is in cooldown.
+            }
+            else // Game is in cooldown.
+            {
+                var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
+                if (matchDiff >= m_matchCooldownLength)
                 {
-                    var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
-                    if (matchDiff >= m_matchCooldownLength)
-                    {
-                        resetGame();
-                        m_matchCooldown = false;
-                    }
+                    resetGame();
+                    m_matchCooldown = false;
                 }
             }
         }

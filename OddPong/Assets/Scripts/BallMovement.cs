@@ -7,8 +7,6 @@ public class BallMovement : MonoBehaviour
 
     public GameObject racquetLeft, racquetRight;
 
-    private float _frozenAngularVelocity;
-    private Vector3 _frozenVelocity = new Vector3();
     private AudioSource hitSound;
 
     void Start()
@@ -16,30 +14,9 @@ public class BallMovement : MonoBehaviour
         hitSound = GetComponent<AudioSource>();
     }
 
-    public void Freeze()
-    {
-        var rigid = GetComponent<Rigidbody2D>();
-        _frozenAngularVelocity = rigid.angularVelocity;
-        _frozenVelocity = rigid.velocity;
-        rigid.angularVelocity = 0.0f;
-        rigid.velocity = new Vector3();
-        rigid.isKinematic = true;
-        this.enabled = false;
-    }
-
-    public void Thaw()
-    {
-        var rigid = GetComponent<Rigidbody2D>();
-        rigid.angularVelocity = _frozenAngularVelocity;
-        rigid.velocity = _frozenVelocity;
-        rigid.isKinematic = false;
-        this.enabled = true;
-    }
-
     //Check which section of racquet the ball hits
     float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
     {
-
         //1 = top of paddle
         //2 = middle of paddle
         //3 = bottom of paddle
