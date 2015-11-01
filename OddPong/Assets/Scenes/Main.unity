@@ -817,6 +817,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 832237170}
   - 212: {fileID: 832237169}
+  - 114: {fileID: 832237171}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -862,6 +863,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &832237171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832237168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f3831c6ee2734439750ea6baf00f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 832237169}
+  tempColor: {r: 0, g: 0, b: 0, a: 0}
+  colourIncrement: .0149999997
+  rgOrB: 0
+  colors:
+  - {r: .764705896, g: .562283754, b: .562283754, a: 0}
+  - {r: .439121991, g: .833110571, b: .963235319, a: 0}
+  - {r: .183823526, g: 1, b: .425862044, a: 0}
+  - {r: 1, g: 1, b: 1, a: 0}
+  currentIndex: 0
+  changeColourTime: 20
 --- !u!1 &885929758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOne: {fileID: 606118405}
   playerTwo: {fileID: 530603489}
-  ball: {fileID: 138798, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
   bgMusic: {fileID: 375653354}
   paused: 0
 --- !u!1 &1534002699
