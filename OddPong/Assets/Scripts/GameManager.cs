@@ -14,11 +14,31 @@ public class GameManager : MonoBehaviour
     public float m_initialBallSpeed;
 
     public int m_maxScore;
-    public Text m_winnerText;
+    public Text m_textOutput;
 
-    public bool m_coolDown; // Whether in cool down state.
-    public float m_cooldownTime; // Length of game cool down between rounds.
-    private float m_cooldownStart; // Time cool down begun.
+    // A match is composed of rounds.
+    public bool m_matchCooldown; // Whether in cool down state.
+    public float m_matchCooldownTime; // Length of game cool down between games.
+    private float m_matchCooldownItr; // Time cool down begun.
+
+    public bool m_roundCooldown; // Whether in cool down state.
+    public float m_roundCooldownTime; // Length of game cool down between games.
+    private float m_roundCooldownItr; // Time cool down begun.
+
+    void resetGame()
+    {
+        // Reset player scores.
+        p1Controller.reset();
+        p2Controller.reset();
+        m_textOutput.text = "";
+        DoBallSpawn();
+    }
+
+    void resetRound()
+    {
+        m_textOutput.text = "";
+        DoBallSpawn();
+    }
 
     void Start()
     {
@@ -26,48 +46,25 @@ public class GameManager : MonoBehaviour
         p2Controller = m_playerTwo.GetComponent<Player>();
         resetGame();
     }
-
-    void resetGame()
-    {
-        // Reset player scores.
-        p1Controller.reset();
-        p2Controller.reset();
-
-        m_winnerText.text = "";
-
-        DoBallSpawn();
-        m_coolDown = false;
-    }
-
+    
     public void playerScores(string player)
     {
-        Debug.Log("Player has scored: " + player);
-        // Could be better.
-        if (player.Equals("PlayerOne"))
-        {
-            p1Controller.incrementScore();
-        }
-        else if (player.Equals("PlayerTwo"))
-        {
-            p2Controller.incrementScore();
-        }
-        else
-        {
-            Debug.LogError("Warning player scores with invalid string.");
-        }
-
+        Player scorer = (GameObject.FindGameObjectWithTag(player)).GetComponent<Player>();
+        scorer.incrementScore();
         m_ballManager.DeleteAllBalls();
-        
+
+        // If the match has concluded based on score (in which case there is no
+        // need to use the round cooldown logic.
         if (p1Controller.m_score >= m_maxScore || p2Controller.m_score >= m_maxScore)
         {
-            m_winnerText.text = player + " wins!";
-            m_cooldownStart = Time.fixedTime;
-            m_coolDown = true;
-        }
-        
-        else
+            m_textOutput.text = player + " wins!";
+            m_matchCooldownItr = Time.fixedTime;
+            m_matchCooldown = true;
+        } else 
         {
-            DoBallSpawn();
+            m_textOutput.text = player + " scores!";
+            m_roundCooldownItr = Time.fixedTime;
+            m_roundCooldown = true;
         }
     }
 
@@ -90,14 +87,28 @@ public class GameManager : MonoBehaviour
         m_ballManager.SpawnBall(spawnPos, startingVelocity);
     }
 
-    // Update is called once per frame
+    // Core Game Loop
     void Update()
     {
-        if (m_coolDown)
+        if (!m_matchCooldown) // Match is ongoing.
         {
-            if (System.Math.Abs(m_cooldownStart - Time.fixedTime) >= m_cooldownTime)
+            if (m_roundCooldown) // Round has completed. Cool off.
+            {
+                var timeDiff = System.Math.Abs(m_roundCooldownItr - Time.fixedTime);
+                if (timeDiff >= m_roundCooldownTime) // Cooldown time expired.
+                {
+                    resetRound();
+                    m_roundCooldown = false;
+                }
+            }
+        }
+        else  // Match has completed. Cool off.
+        {
+            var timeDiff = System.Math.Abs(m_matchCooldownItr - Time.fixedTime);
+            if (timeDiff >= m_matchCooldownTime) // Cooldown time expired.
             {
                 resetGame();
+                m_matchCooldown = false;
             }
         }
     }

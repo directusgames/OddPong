@@ -20,15 +20,15 @@ public class BgCycle : MonoBehaviour
             colors[i].a = backgroundImage.material.color.a;
         }
 
-        if (colors == null || colors.Length < 2)
+        if (colors == null || colors.Length < 2) { 
             Debug.Log("Need to setup colors array in inspector");
+        }
 
         nextIndex = (currentIndex + 1) % colors.Length;
     }
 
     void Update()
     {
-
         timer += Time.deltaTime;
 
         if (timer > changeColourTime)
@@ -36,7 +36,6 @@ public class BgCycle : MonoBehaviour
             currentIndex = (currentIndex + 1) % colors.Length;
             nextIndex = (currentIndex + 1) % colors.Length;
             timer = 0.0f;
-
         }
         backgroundImage.material.color = Color.Lerp(colors[currentIndex], colors[nextIndex], timer / changeColourTime);
     }

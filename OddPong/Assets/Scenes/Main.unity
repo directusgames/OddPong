@@ -327,7 +327,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: afa35fd03a511624f827069120c42bef, type: 3}
-    m_FontSize: 72
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -335,7 +335,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &314837800
@@ -948,7 +948,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: afa35fd03a511624f827069120c42bef, type: 3}
-    m_FontSize: 48
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1434,9 +1434,11 @@ MonoBehaviour:
   m_ballManager: {fileID: 827787784}
   m_initialBallSpeed: 350
   m_maxScore: 5
-  m_winnerText: {fileID: 314837799}
-  m_coolDown: 0
-  m_cooldownTime: 5
+  m_textOutput: {fileID: 314837799}
+  m_matchCooldown: 0
+  m_matchCooldownTime: 5
+  m_roundCooldown: 0
+  m_roundCooldownTime: 2
 --- !u!114 &1480861404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,11 +1803,23 @@ Prefab:
       objectReference: {fileID: 824156782}
     - target: {fileID: 106712, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
       propertyPath: m_Name
-      value: Player One
+      value: PlayerOne
       objectReference: {fileID: 0}
     - target: {fileID: 106712, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
       propertyPath: m_TagString
       value: PlayerOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123722, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
+      propertyPath: m_Size.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123722, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356708, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
