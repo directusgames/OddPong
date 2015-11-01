@@ -1,6 +1,6 @@
 # OddPong
 
-This game was created for a gamejam with the theme <REDACTED>.
+This game was created for a gamejam with the theme \<REDACTED>.
 
 # Play Instructions
 
