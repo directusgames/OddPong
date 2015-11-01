@@ -8,6 +8,8 @@ public class GameInput : MonoBehaviour
     public GameObject pauseMenu;
 
     public AudioSource bgMusic;
+    public AudioSource pauseSound;
+    public AudioSource unpauseSound;
 
     private UserInput p1Input;
     private UserInput p2Input;
@@ -25,17 +27,20 @@ public class GameInput : MonoBehaviour
 
     void SetPaused(bool shouldPause)
     {
-        pauseMenu.SetActive(shouldPause);
-        p1Input.enabled = !shouldPause;
-        p2Input.enabled = !shouldPause;
         if (shouldPause)
         {
+            pauseSound.Play();
             bgMusic.Pause();
         }
         else
         {
+            unpauseSound.Play();
             bgMusic.Play();
         }
+
+        pauseMenu.SetActive(shouldPause);
+        p1Input.enabled = !shouldPause;
+        p2Input.enabled = !shouldPause;
 
         var balls = GameObject.FindGameObjectsWithTag("Ball");
         foreach (var ball in balls)

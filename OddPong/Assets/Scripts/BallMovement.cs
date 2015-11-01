@@ -9,6 +9,12 @@ public class BallMovement : MonoBehaviour
 
     private float _frozenAngularVelocity;
     private Vector3 _frozenVelocity = new Vector3();
+    private AudioSource hitSound;
+
+    void Start()
+    {
+        hitSound = GetComponent<AudioSource>();
+    }
 
     public void Freeze()
     {
@@ -42,7 +48,10 @@ public class BallMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-
+        if (this.isActiveAndEnabled)
+        {
+            hitSound.Play();
+        }
         if (col.gameObject.name == racquetLeft.name)
         {
 
@@ -52,8 +61,7 @@ public class BallMovement : MonoBehaviour
 
             GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
         }
-
-        if (col.gameObject.name == racquetRight.name)
+        else if (col.gameObject.name == racquetRight.name)
         {
 
             float y = hitFactor(transform.position,
