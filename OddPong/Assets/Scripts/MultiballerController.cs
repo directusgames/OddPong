@@ -35,14 +35,13 @@ public class MultiballerController : MonoBehaviour
     {
         //Disable attractor
         attractor.SetActive(false);
-
+		transform.parent.gameObject.GetComponent<BlackHoleController>().StopScaling();
+		
         //Disable collider
         GetComponent<CircleCollider2D>().enabled = false;
-
-        transform.parent.gameObject.GetComponent<BlackHoleController>().ScaleDown();
-
-        // Actually spawn the balls with some delay.
+         // Actually spawn the balls with some delay.
         Invoke("DoMultiBallSpawn", spawnDelaySeconds);
+        
     }
 
     void DoMultiBallSpawn()
@@ -53,5 +52,7 @@ public class MultiballerController : MonoBehaviour
             float ballDirection = (ballNum % 2 != 0) ? -1.0f : 1.0f;
             ballManager.SpawnBall(transform.position, new Vector3(ballDirection, Random.Range(-1f, 1f), 0) * ballSpeed);
         }
+        
+		transform.parent.gameObject.GetComponent<BlackHoleController>().ScaleDown();
     }
 }
