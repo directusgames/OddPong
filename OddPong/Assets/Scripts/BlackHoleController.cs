@@ -10,10 +10,10 @@ public class BlackHoleController : MonoBehaviour
     public float maxLifetime = 8.0f;
 
     private FadingAudioSource _loopingSound;
-    private ScalingMode _scalingMode = ScalingMode.ScaleUp;
+    public ScalingMode _scalingMode = ScalingMode.ScaleUp;
     private float _startTime;
 
-    private enum ScalingMode
+    public enum ScalingMode
     {
         ScaleUp,
         ScaleDown,
@@ -75,5 +75,14 @@ public class BlackHoleController : MonoBehaviour
     {
         _scalingMode = ScalingMode.ScaleDown;
         _loopingSound.FadeOut();
+    }
+    
+    public void ScaleUp()
+    {
+    }
+    
+    public void StopScaling()
+    {
+		_scalingMode = ScalingMode.None;
     }
 }

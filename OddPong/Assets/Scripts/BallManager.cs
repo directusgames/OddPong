@@ -8,6 +8,7 @@ public class BallManager : MonoBehaviour
 
     public bool m_gravityApplies;
     public float m_gravityScale = 20f;
+    
 
     public void SpawnBall(Vector3 position, Vector3 startingVelocity)
     {
