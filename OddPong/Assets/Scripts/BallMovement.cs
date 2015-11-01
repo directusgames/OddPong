@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BallMovement : MonoBehaviour
 {
-    public int startSpeed;
+    public float startSpeed;
+    public float speedUpPerSecond = 0.0f;
 
     public GameObject racquetLeft, racquetRight;
 
     private AudioSource hitSound;
+    private Rigidbody2D _rigid;
+    private bool _raiseSpeed;
 
     void Start()
     {
+        if (speedUpPerSecond <= 0.0f)
+        {
+            speedUpPerSecond = startSpeed;
+        }
         hitSound = GetComponent<AudioSource>();
+        _rigid = GetComponent<Rigidbody2D>();
     }
 
     //Check which section of racquet the ball hits
@@ -21,6 +28,33 @@ public class BallMovement : MonoBehaviour
         //2 = middle of paddle
         //3 = bottom of paddle
         return (ballPos.y - racketPos.y) / racketHeight;
+    }
+
+    public void GetUpToSpeed()
+    {
+        _raiseSpeed = true;
+    }
+
+    void FixedUpdate()
+    {
+        if (_raiseSpeed)
+        {
+            float speed = _rigid.velocity.magnitude;
+            if (speed < startSpeed)
+            {
+                float increase = speed + Time.fixedDeltaTime * speedUpPerSecond;
+                // Manually normalise, because Vector2D.Normalize() doesn't do anything???
+                if (speed != 0.0f)
+                {
+                    _rigid.velocity /= speed;
+                }
+                _rigid.velocity *= increase;
+            }
+            else
+            {
+                _raiseSpeed = false;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -38,7 +72,7 @@ public class BallMovement : MonoBehaviour
 
             Vector2 dir = new Vector2(1, y).normalized;
 
-            GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
+            _rigid.velocity = dir * startSpeed;
         }
         else if (col.gameObject.name == racquetRight.name)
         {
@@ -49,7 +83,7 @@ public class BallMovement : MonoBehaviour
 
             Vector2 dir = new Vector2(-1, y).normalized;
 
-            GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
+            _rigid.velocity = dir * startSpeed;
         }
     }
 }
