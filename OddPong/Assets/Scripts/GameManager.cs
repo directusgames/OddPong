@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public GameObject m_playerOne;
     public GameObject m_playerTwo;
 
+    public AudioSource gameWinSound;
+
     private Player p1Controller;
     private Player p2Controller;
 
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
             m_winnerText.text = player + " wins!";
             m_cooldownStart = Time.fixedTime;
             m_coolDown = true;
+            gameWinSound.Play();
         }
         
         else
