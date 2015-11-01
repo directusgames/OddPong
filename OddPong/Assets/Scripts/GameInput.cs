@@ -5,6 +5,7 @@ public class GameInput : MonoBehaviour
 {
     public GameObject playerOne;
     public GameObject playerTwo;
+    public GameObject pauseMenu;
 
     public AudioSource bgMusic;
 
@@ -17,65 +18,65 @@ public class GameInput : MonoBehaviour
     void Start()
     {
         paused = false;
+        pauseMenu.SetActive(false);
         p1Input = playerOne.GetComponent<UserInput>();
         p2Input = playerTwo.GetComponent<UserInput>();
     }
 
-    void Pause()
+    void SetPaused(bool shouldPause)
     {
-        if (!paused) // Pause.
+        pauseMenu.SetActive(shouldPause);
+        p1Input.enabled = !shouldPause;
+        p2Input.enabled = !shouldPause;
+        if (shouldPause)
         {
-            p1Input.enabled = false;
-            p2Input.enabled = false;
             bgMusic.Pause();
+        }
+        else
+        {
+            bgMusic.Play();
+        }
 
-            var balls = GameObject.FindGameObjectsWithTag("Ball");
-            foreach (var ball in balls)
+        var balls = GameObject.FindGameObjectsWithTag("Ball");
+        foreach (var ball in balls)
+        {
+            var movement = ball.GetComponent<BallMovement>();
+            if (movement)
             {
-                var movement = ball.GetComponent<BallMovement>();
-                if (movement)
+                if (shouldPause)
                 {
                     movement.Freeze();
                 }
-            }
-
-            paused = true;
-        }
-        else // Un-pause.
-        {
-            p1Input.enabled = true;
-            p2Input.enabled = true;
-            bgMusic.Play();
-
-            var balls = GameObject.FindGameObjectsWithTag("Ball");
-            foreach (var ball in balls)
-            {
-                var movement = ball.GetComponent<BallMovement>();
-                if (movement)
+                else
                 {
                     movement.Thaw();
                 }
             }
-
-            paused = false;
         }
+
+        paused = shouldPause;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // TODO:
-            // - 1) Pause.
-            // - 2) Confirm with user.
-            // - 3) If cancel, un-pause, resume.
-            // - 4) If confirm, Application.Quit().
-            Application.Quit();
+            // Toggle paused mode.
+            SetPaused(!paused);
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        else if (paused && Input.GetKeyDown(KeyCode.Q))
         {
-            Pause();
+            DoApplicationQuit();
         }
+    }
+
+    void DoApplicationQuit()
+    {
+        // Dirty workaround to in-editor play mode not respecting Application.Quit().
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
