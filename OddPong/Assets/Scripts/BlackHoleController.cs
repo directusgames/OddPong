@@ -7,7 +7,7 @@ public class BlackHoleController : MonoBehaviour
     /// Time in seconds to take when coming in/out.
     /// </summary>
     public float timeToScale = 2.0f;
-    public float maxLifetime = 5.0f;
+    public float maxLifetime = 8.0f;
 
     private FadingAudioSource _loopingSound;
     private ScalingMode _scalingMode = ScalingMode.ScaleUp;
