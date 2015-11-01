@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numBalls: 2
   ballSpeed: 350
-  spawnDelaySeconds: 2
+  spawnDelaySeconds: 1.5
   attractor: {fileID: 141386}
   ballManager: {fileID: 0}
 --- !u!114 &11440262
@@ -410,7 +410,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnDelaySeconds
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
