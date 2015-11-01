@@ -26,11 +26,15 @@ public class GameManager : MonoBehaviour
     public bool m_roundCooldown;
     public float m_roundCooldownLength;
     private float m_roundCooldownPrev;
+    private Vector3 m_lastWinnerPosition;
 
     void Start()
     {
         p1Controller = m_playerOne.GetComponent<Player>();
         p2Controller = m_playerTwo.GetComponent<Player>();
+
+        // Randomly pick who was the previous 'winner' so we have a starting point.
+        m_lastWinnerPosition = (Random.Range(0.0f, 1.0f) >= 0.5f) ? p1Controller.transform.position : p2Controller.transform.position;
         resetGame();
     }
 
@@ -53,7 +57,8 @@ public class GameManager : MonoBehaviour
         Player scorer = GameObject.FindGameObjectWithTag(player).GetComponent<Player>();
         scorer.incrementScore();
         m_ballManager.DeleteAllBalls();
-        
+        m_lastWinnerPosition = scorer.transform.position;
+
         if (p1Controller.m_score >= m_maxScore || p2Controller.m_score >= m_maxScore)
         {
             m_outputText.text = player + " wins!";
@@ -72,19 +77,13 @@ public class GameManager : MonoBehaviour
 
     void DoBallSpawn()
     {
-		//Either 'right' or 'left'
-		int[] xDir = new int[2];
-		xDir[0] = -1;
-		xDir[1] = 1;
-		
-    	//For the X it chooses either 1 or -1, and for y it will be a random float between -1 and 1, this should
-    	//give us the correct 'diagonal' angle
-    	Vector2 initialBallDir = new Vector2(xDir[Random.Range (0,xDir.Length)], Random.Range (-1f,1f));
+        // For X, make the ball go to the previous winner.
+        // For Y, randomly pick a direction (angle).
+        float spawnDirection = (this.transform.position.x >= m_lastWinnerPosition.x) ? -1.0f : 1.0f;
+        Vector2 initialBallDir = new Vector2(spawnDirection, Random.Range(-1.0f, 1.0f));
     	
-		float camHeight = Camera.main.orthographicSize/2;
-    	
-    	//Debug.Log ("Camera height: " + Camera.main.orthographicSize);
-		Vector3 spawnPos = new Vector3(0,Random.Range (camHeight, -camHeight), 0);
+		float camHeight = Camera.main.orthographicSize / 2.0f;
+		Vector3 spawnPos = new Vector3(0, Random.Range (camHeight, -camHeight), 0);
         Vector3 startingVelocity = initialBallDir * m_initialBallSpeed;
         m_ballManager.SpawnBall(spawnPos, startingVelocity);
     }
