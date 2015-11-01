@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BgCycle : MonoBehaviour {
-
-    public SpriteRenderer backgroundImage;
-    public Color tempColor;
-    public float colourIncrement;
-    public char rgOrB;
-
+public class BgCycle : MonoBehaviour
+{
+    public Renderer backgroundImage;
     public Color[] colors;
 
     public int currentIndex = 0;
@@ -15,14 +11,13 @@ public class BgCycle : MonoBehaviour {
 
     public float changeColourTime = 2.0f;
 
-    private float lastChange = 0.0f;
     private float timer = 0.0f;
 
     void Start()
     {
-        for(int i = 0; i < colors.Length; i++)
+        for (int i = 0; i < colors.Length; i++)
         {
-            colors[i].a = backgroundImage.color.a;
+            colors[i].a = backgroundImage.material.color.a;
         }
 
         if (colors == null || colors.Length < 2)
@@ -43,6 +38,6 @@ public class BgCycle : MonoBehaviour {
             timer = 0.0f;
 
         }
-        backgroundImage.color = Color.Lerp(colors[currentIndex], colors[nextIndex], timer / changeColourTime);
+        backgroundImage.material.color = Color.Lerp(colors[currentIndex], colors[nextIndex], timer / changeColourTime);
     }
 }
