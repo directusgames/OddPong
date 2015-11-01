@@ -8,7 +8,6 @@ public class BlackHoleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-				
 	}
 	
 	// Update is called once per frame
@@ -20,6 +19,18 @@ public class BlackHoleController : MonoBehaviour {
 		{
 			transform.localScale = new Vector3(transform.localScale.x + (scaleSpeed*Time.deltaTime), transform.localScale.y + (scaleSpeed*Time.deltaTime),1);
 		}
-	}
+	}			
+
 	
+	public IEnumerator ScaleDown()
+	{
+		while(transform.localScale.x >=	0)
+		{
+			transform.localScale = new Vector3(transform.localScale.x - scaleSpeed, transform.localScale.y - scaleSpeed,1);
+		}
+		
+		Destroy (gameObject);	
+		
+		yield return new WaitForSeconds(0f);
+	}
 }
