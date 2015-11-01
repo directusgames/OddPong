@@ -479,7 +479,7 @@ GameObject:
   - 114: {fileID: 314837799}
   - 114: {fileID: 314837801}
   m_Layer: 5
-  m_Name: Player Win Text
+  m_Name: OutputText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1788,9 +1788,11 @@ MonoBehaviour:
   m_ballManager: {fileID: 827787784}
   m_initialBallSpeed: 350
   m_maxScore: 5
-  m_winnerText: {fileID: 314837799}
-  m_coolDown: 0
-  m_cooldownTime: 5
+  m_outputText: {fileID: 314837799}
+  m_matchCooldown: 0
+  m_matchCooldownLength: 5
+  m_roundCooldown: 0
+  m_roundCooldownLength: 2
 --- !u!114 &1480861404
 MonoBehaviour:
   m_ObjectHideFlags: 0
