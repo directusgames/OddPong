@@ -57,12 +57,14 @@ public class GameManager : MonoBehaviour
         }
 
         m_ballManager.DeleteAllBalls();
+        
         if (p1Controller.m_score >= m_maxScore || p2Controller.m_score >= m_maxScore)
         {
             m_winnerText.text = player + " wins!";
             m_cooldownStart = Time.fixedTime;
             m_coolDown = true;
         }
+        
         else
         {
             DoBallSpawn();
@@ -71,8 +73,20 @@ public class GameManager : MonoBehaviour
 
     void DoBallSpawn()
     {
-        Vector3 spawnPos = new Vector3();
-        Vector3 startingVelocity = Vector2.right * m_initialBallSpeed;
+		//Either 'right' or 'left'
+		int[] xDir = new int[2];
+		xDir[0] = -1;
+		xDir[1] = 1;
+		
+    	//For the X it chooses either 1 or -1, and for y it will be a random float between -1 and 1, this should
+    	//give us the correct 'diagonal' angle
+    	Vector2 initialBallDir = new Vector2(xDir[Random.Range (0,xDir.Length)], Random.Range (-1f,1f));
+    	
+		float camHeight = Camera.main.orthographicSize/2;
+    	
+    	//Debug.Log ("Camera height: " + Camera.main.orthographicSize);
+		Vector3 spawnPos = new Vector3(0,Random.Range (camHeight, -camHeight), 0);
+        Vector3 startingVelocity = initialBallDir * m_initialBallSpeed;
         m_ballManager.SpawnBall(spawnPos, startingVelocity);
     }
 
