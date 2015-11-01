@@ -27,6 +27,8 @@ public class GameInput : MonoBehaviour
 
     void SetPaused(bool shouldPause)
     {
+        // Pause all movement and timers.
+        Time.timeScale = (shouldPause) ? 0.0f : 1.0f;
         if (shouldPause)
         {
             pauseSound.Play();
@@ -41,23 +43,6 @@ public class GameInput : MonoBehaviour
         pauseMenu.SetActive(shouldPause);
         p1Input.enabled = !shouldPause;
         p2Input.enabled = !shouldPause;
-
-        var balls = GameObject.FindGameObjectsWithTag("Ball");
-        foreach (var ball in balls)
-        {
-            var movement = ball.GetComponent<BallMovement>();
-            if (movement)
-            {
-                if (shouldPause)
-                {
-                    movement.Freeze();
-                }
-                else
-                {
-                    movement.Thaw();
-                }
-            }
-        }
 
         showingPauseMenu = shouldPause;
     }
