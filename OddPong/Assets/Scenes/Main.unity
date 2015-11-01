@@ -1296,6 +1296,10 @@ Prefab:
       propertyPath: moveDown
       value: 107
       objectReference: {fileID: 0}
+    - target: {fileID: 11491220, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
+      propertyPath: playerAxis
+      value: PlayerTwoMove
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
   m_IsPrefabParent: 0
@@ -2312,6 +2316,10 @@ Prefab:
     - target: {fileID: 106712, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
       propertyPath: m_TagString
       value: PlayerOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491220, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
+      propertyPath: playerAxis
+      value: PlayerOneMove
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}

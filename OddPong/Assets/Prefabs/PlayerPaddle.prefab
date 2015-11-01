@@ -117,10 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787de6cc245334d408de3f0b9d9ca5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody: {fileID: 5013414}
   moveSpeed: 5000
-  moveUp: 119
-  moveDown: 115
+  playerAxis: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
