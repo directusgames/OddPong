@@ -12,7 +12,12 @@ public class Attractor : MonoBehaviour
 
     void Start()
     {
-        _range = GetComponent<CircleCollider2D>().radius * Mathf.Max(transform.localScale.x, transform.localScale.y);
+        
+    }
+    
+    void Update()
+    {
+		_range = GetComponent<CircleCollider2D>().radius * Mathf.Max(transform.localScale.x, transform.localScale.y);
     }
 
     void OnTriggerStay2D(Collider2D other)
