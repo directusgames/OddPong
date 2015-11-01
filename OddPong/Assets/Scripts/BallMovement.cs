@@ -50,6 +50,8 @@ public class BallMovement : MonoBehaviour
     {
         if (this.isActiveAndEnabled)
         {
+            // Randomly alter the pitch so we don't go crazy hearing the same sound.
+            hitSound.pitch = Random.Range(0.75f, 1.25f);
             hitSound.Play();
         }
         if (col.gameObject.name == racquetLeft.name)
