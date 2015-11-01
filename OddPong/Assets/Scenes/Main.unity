@@ -831,7 +831,7 @@ MonoBehaviour:
   m_gravitySound: {fileID: 1194441197}
   gravEffectLeft: {fileID: 2078858271}
   gravEffectRight: {fileID: 1561017731}
-  m_animateTime: 3
+  m_animateTime: 5
   m_prevTime: 0
   m_running: 0
 --- !u!4 &495732405
