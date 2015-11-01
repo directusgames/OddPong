@@ -3,7 +3,7 @@
 public class BallMovement : MonoBehaviour
 {
     public float startSpeed;
-    public float timeForFullSpeedUp = 2.0f;
+    public float speedUpPerSecond = 0.0f;
 
     public GameObject racquetLeft, racquetRight;
 
@@ -13,6 +13,10 @@ public class BallMovement : MonoBehaviour
 
     void Start()
     {
+        if (speedUpPerSecond <= 0.0f)
+        {
+            speedUpPerSecond = startSpeed;
+        }
         hitSound = GetComponent<AudioSource>();
         _rigid = GetComponent<Rigidbody2D>();
     }
@@ -38,7 +42,12 @@ public class BallMovement : MonoBehaviour
             float speed = _rigid.velocity.magnitude;
             if (speed < startSpeed)
             {
-                float increase = 1.0f + speed * Time.fixedDeltaTime / timeForFullSpeedUp;
+                float increase = speed + Time.fixedDeltaTime * speedUpPerSecond;
+                // Manually normalise, because Vector2D.Normalize() doesn't do anything???
+                if (speed != 0.0f)
+                {
+                    _rigid.velocity /= speed;
+                }
                 _rigid.velocity *= increase;
             }
             else
