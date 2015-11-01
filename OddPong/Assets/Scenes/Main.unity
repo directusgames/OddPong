@@ -842,9 +842,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gravity: {x: 0, y: 0}
   m_ballManager: {fileID: 827787784}
+  m_gravitySound: {fileID: 1194441197}
   gravEffectLeft: {fileID: 2078858271}
   gravEffectRight: {fileID: 1561017731}
-  m_gravitySound: {fileID: 1194441197}
   m_animateTime: 3
   m_prevTime: 0
   m_running: 0
