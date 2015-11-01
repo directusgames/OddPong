@@ -7,8 +7,8 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: PlayerOneMove
-    descriptiveName: Move player one paddle down
-    descriptiveNegativeName: Move player one paddle up
+    descriptiveName: Player one paddle down
+    descriptiveNegativeName: Player one paddle up
     negativeButton: s
     positiveButton: w
     altNegativeButton: 
@@ -23,8 +23,8 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: PlayerTwoMove
-    descriptiveName: Move player two paddle down
-    descriptiveNegativeName: Move player two paddle up
+    descriptiveName: Player two paddle down
+    descriptiveNegativeName: Player two paddle up
     negativeButton: k
     positiveButton: i
     altNegativeButton: 
