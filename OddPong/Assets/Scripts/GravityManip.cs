@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class GravityManip : MonoBehaviour {
+public class GravityManip : MonoBehaviour, GameEvent  {
     public Vector2 m_gravity;
-
     public BallManager m_ballManager;
 
     // Left and right strong vectors.
@@ -11,81 +9,50 @@ public class GravityManip : MonoBehaviour {
     private Vector2 m_strongLeft = new Vector2(-40, 0);
     private Vector2 m_strongRight = new Vector2(40, 0);
 
-    public bool m_swapNormal;
-    // Uses m_swapTime to decide when to go back to normal.
-    public float m_normalPrevTime;
+    public float m_animateTime; // Gravity interval in seconds.
+    public float m_prevTime; // Start time to measure against current time.
 
-    public bool m_swapPlayer;
-    public float m_swapTime; // Gravity interval in seconds.
-    public float m_swapPrevTime; // Start time to measure against current time.
+    public bool m_running;
 
     // WIP / broken:
     // private Vector2 slimeSoccerUp = new Vector2(0, 10);
     // private Vector2 slimeSoccerDown = new Vector2(0, -10);
 
-    public void NormalGravity()
+    // Return to normal.
+    public void StopRandomEvent()
     {
-        Debug.Log("Normal gravity");
+        Debug.Log("stoprandomevent");
+        // Apply normal gravity.
         m_ballManager.AntiGravBalls();
-        m_swapNormal = false;
+        Physics2D.gravity = new Vector2(0f, 0f);
+        m_running = false;
     }
 
-    private void SwapPlayer()
+    // Target Player 1.
+    public void StartRandomEvent()
     {
-        Debug.Log("Swap player");
-        // Invert vector function instead?
-        m_gravity = m_gravity.Equals(m_strongLeft) ? m_strongRight : m_strongLeft;
-        Physics2D.gravity = m_gravity;
-
-        // No longer want to swap player.
-        m_swapPlayer = false;
-
-        // We will want to revert back to normal after the same interval time.
-        m_swapNormal = true;
-        m_normalPrevTime = Time.fixedTime;
-    }
-
-    public void PlayerGravity()
-    {
-        Debug.Log("Player gravity");
         m_ballManager.GravBalls(); // Allow ball to experience gravity.
-
-        // Randomise the pain.
-        int rand = Random.Range(0, 1);
-        m_gravity = rand == 1 ? m_strongLeft : m_strongRight;
-
+        // Randomise intial side of gravity.
+        float rand = Random.Range(0.0f, 1.0f);
+        m_gravity = rand <= 0.4f ? m_strongLeft : m_strongRight;
         Physics2D.gravity = m_gravity;
-
-        m_swapPlayer = true; // Next iteration we will want to swap the player.
-        m_swapPrevTime = Time.fixedTime;
+        m_prevTime = Time.fixedTime;
+        m_running = true;
     }
 
     void Start()
     {
-        m_swapPlayer = false;
-        m_swapNormal = false;
     }
 
     void Update()
     {
-        if (m_swapPlayer)
+        if (m_running)
         {
-            var playerSwapDiff = System.Math.Abs(m_swapPrevTime - Time.fixedTime);
-            if (playerSwapDiff >= m_swapTime)
+            var timeDiff = System.Math.Abs(m_prevTime - Time.fixedTime);
+            if (timeDiff > m_animateTime)
             {
-                Debug.Log("Calling swap player");
-                SwapPlayer();
+                StopRandomEvent();
             }
-        }
-        if (m_swapNormal)
-        {
-            var normSwapDiff = System.Math.Abs(m_normalPrevTime - Time.fixedTime);
-            if (normSwapDiff >= m_swapTime)
-            {
-                Debug.Log("Calling normal gravity");
-                NormalGravity();
-            }
-            
         }
     }
 }
