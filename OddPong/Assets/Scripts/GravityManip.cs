@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Allow normal play for 1 minute.
-// Swap to strong left for 4 s.
-// Swap to strong right for 4 s.
-// Return to normal play (ad infinitum).
 public class GravityManip : MonoBehaviour {
     public Vector2 m_gravity;
 
