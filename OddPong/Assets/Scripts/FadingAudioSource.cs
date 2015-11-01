@@ -68,18 +68,6 @@ public class FadingAudioSource : MonoBehaviour
         this.audioSource.volume = 0f;
     }
 
-    private void OnDisable()
-    {
-        this.audioSource.enabled = false;
-        this.Stop();
-    }
-
-    private void OnEnable()
-    {
-        this.audioSource.enabled = true;
-        this.Play();
-    }
-
     private void Update()
     {
         if (!this.audioSource.enabled)
