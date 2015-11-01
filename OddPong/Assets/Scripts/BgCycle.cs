@@ -3,11 +3,7 @@ using System.Collections;
 
 public class BgCycle : MonoBehaviour {
 
-    public SpriteRenderer backgroundImage;
-    public Color tempColor;
-    public float colourIncrement;
-    public char rgOrB;
-
+    public Renderer backgroundImage;
     public Color[] colors;
 
     public int currentIndex = 0;
@@ -22,7 +18,7 @@ public class BgCycle : MonoBehaviour {
     {
         for(int i = 0; i < colors.Length; i++)
         {
-            colors[i].a = backgroundImage.color.a;
+            colors[i].a = backgroundImage.material.color.a;
         }
 
         if (colors == null || colors.Length < 2)
@@ -43,6 +39,6 @@ public class BgCycle : MonoBehaviour {
             timer = 0.0f;
 
         }
-        backgroundImage.color = Color.Lerp(colors[currentIndex], colors[nextIndex], timer / changeColourTime);
+        backgroundImage.material.color = Color.Lerp(colors[currentIndex], colors[nextIndex], timer / changeColourTime);
     }
 }
