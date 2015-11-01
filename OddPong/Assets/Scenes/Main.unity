@@ -1491,6 +1491,10 @@ Prefab:
       propertyPath: m_Name
       value: Player Two
       objectReference: {fileID: 0}
+    - target: {fileID: 106712, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
+      propertyPath: m_TagString
+      value: Player Two
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
   m_IsPrefabParent: 0
@@ -1998,7 +2002,7 @@ GameObject:
   - 114: {fileID: 1470013589}
   m_Layer: 0
   m_Name: ScoreBarrier (right)
-  m_TagString: PlayerOne
+  m_TagString: Player One
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2321,7 +2325,7 @@ GameObject:
   - 114: {fileID: 1551955901}
   m_Layer: 0
   m_Name: ScoreBarrier (left)
-  m_TagString: PlayerTwo
+  m_TagString: Player Two
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2753,7 +2757,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 106712, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
       propertyPath: m_TagString
-      value: PlayerOne
+      value: Player One
       objectReference: {fileID: 0}
     - target: {fileID: 11491220, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
       propertyPath: playerAxis
