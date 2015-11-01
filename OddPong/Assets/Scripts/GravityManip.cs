@@ -42,23 +42,26 @@ public class GravityManip : MonoBehaviour, GameEvent  {
     }
 
     // Target random player with gravity.
+    // Set up event, which Update() then performs the rest of.
     public void StartRandomEvent()
     {
         m_ballManager.GravBalls(); // Allow ball to experience gravity.
-        // Randomise initial side of gravity.
-        float rand = Random.Range(0.0f, 1.0f);
-        if (rand <= 0.5f) {
-	    	m_gravity = m_strongLeft;
-	    	gravEffectLeft.GetComponent<GravityEffectController>().EffectOn ();
-    	} else {
-    		m_gravity = m_strongRight;
-			gravEffectRight.GetComponent<GravityEffectController>().EffectOn ();
-    	}
-        
-        Physics2D.gravity = m_gravity;
         m_prevTime = Time.fixedTime;
         m_gravitySound.Play();
         m_running = true;
+
+        // Randomise initial side of gravity.
+        float rand = Random.Range(0.0f, 1.0f);
+        if (rand <= 0.5f)
+        {
+            m_gravity = m_strongLeft;
+            gravEffectLeft.GetComponent<GravityEffectController>().EffectOn();
+        }
+        else
+        {
+            m_gravity = m_strongRight;
+            gravEffectRight.GetComponent<GravityEffectController>().EffectOn();
+        }
     }
 
     void Start()
@@ -74,6 +77,14 @@ public class GravityManip : MonoBehaviour, GameEvent  {
             if (timeDiff > m_animateTime)
             {
                 StopRandomEvent();
+            }
+            else
+            {
+                // Animation is nearing end.
+                if (timeDiff - m_animateTime < 1)
+                {
+                    Physics2D.gravity = m_gravity;
+                }
             }
         }
     }
