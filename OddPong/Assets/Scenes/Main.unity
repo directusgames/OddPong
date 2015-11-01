@@ -1404,7 +1404,7 @@ MonoBehaviour:
   playerTwo: {fileID: 992970905}
   pauseMenu: {fileID: 999938975}
   bgMusic: {fileID: 375653354}
-  paused: 0
+  showingPauseMenu: 0
 --- !u!1 &1534002699
 GameObject:
   m_ObjectHideFlags: 0
