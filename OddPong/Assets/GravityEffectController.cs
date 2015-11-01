@@ -3,16 +3,25 @@ using System.Collections;
 
 public class GravityEffectController : MonoBehaviour {
 
-	public int fadeSpeed;
-	public int alphaVal;
+	public float fadeSpeed;
+	public float fadeTime;
+	public float alphaVal;
 	
-	private int currentAlpha;
+	public GameObject magnet;
+	
+	private float currentAlpha;
+	private Color baseColor;
+	
+
 
 
 	// Use this for initialization
 	void Start () {
-	
+		
+		baseColor = GetComponent<Renderer>().material.color;
+		Debug.Log ("Effect color: " + GetComponent<Renderer>().material.color);
 		currentAlpha = 0;
+		//EffectOn ();
 		
 	}
 	
@@ -21,18 +30,41 @@ public class GravityEffectController : MonoBehaviour {
 	
 	}
 	
-	void FadeIn()
+	public void EffectOn()
 	{
-		
+		InvokeRepeating("FadeIn",0,fadeTime);
+	}
+	
+	public void EffectOff()
+	{
+		InvokeRepeating("FadeOut",0,fadeTime);
+		magnet.SetActive(false);
+	}
+	
+	void FadeIn()
+	{		
 		if(currentAlpha <= alphaVal)
 		{
 			currentAlpha = currentAlpha + fadeSpeed;
-			newAlpha.a = currentAlpha;
-			GetComponent<Renderer>().material.color.a = newAlpha;
+			GetComponent<Renderer>().material.color = new Color(baseColor.r, baseColor.g, baseColor.b, currentAlpha/255);
+		}
+		else
+		{
+			CancelInvoke("FadeIn");
+			magnet.SetActive(true);
 		}
 	}
 	
 	void FadeOut()
 	{
+		if(currentAlpha > 0)
+		{
+			currentAlpha = currentAlpha - fadeSpeed;
+			GetComponent<Renderer>().material.color = new Color(baseColor.r, baseColor.g, baseColor.b, currentAlpha/255);
+		}
+		else
+		{
+			CancelInvoke("FadeOut");
+		}
 	}
 }
