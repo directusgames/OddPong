@@ -842,6 +842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gravity: {x: 0, y: 0}
   m_ballManager: {fileID: 827787784}
+  gravEffectLeft: {fileID: 2078858271}
+  gravEffectRight: {fileID: 1561017731}
   m_gravitySound: {fileID: 1194441197}
   m_animateTime: 3
   m_prevTime: 0
@@ -2395,9 +2397,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3101c13d729bd4d998d84384870b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: .200000003
+  fadeSpeed: .5
   fadeTime: .00499999989
-  alphaVal: 50
+  alphaVal: 60
   magnet: {fileID: 1440883396}
 --- !u!23 &1561017734
 MeshRenderer:
@@ -2809,9 +2811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3101c13d729bd4d998d84384870b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: .200000003
+  fadeSpeed: .5
   fadeTime: .00499999989
-  alphaVal: 50
+  alphaVal: 60
   magnet: {fileID: 288164257}
 --- !u!1 &2106671749
 GameObject:
