@@ -19,3 +19,12 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Git diff and merge artifacts
+*.orig
+
+# Windows junk files
+[Tt]humbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
