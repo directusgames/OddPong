@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11476744}
   m_Layer: 0
   m_Name: PlayerPaddle
-  m_TagString: Untagged
+  m_TagString: PlayerTwo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 300, y: 0, z: -1}
   m_LocalScale: {x: 25, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 5013414}
   moveSpeed: 5000
-  moveUp: 119
-  moveDown: 115
+  moveUp: 105
+  moveDown: 107
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
