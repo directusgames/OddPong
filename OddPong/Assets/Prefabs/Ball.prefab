@@ -42,7 +42,7 @@ Rigidbody2D:
   m_Mass: 9.99999975e-05
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 0
+  m_GravityScale: 20
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e0c870916255f44b330bdba51e1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 350
+  startSpeed: 450
   racquetLeft: {fileID: 0}
   racquetRight: {fileID: 0}
 --- !u!212 &21225532
@@ -155,7 +155,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: startSpeed
-      value: 350
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -184,6 +184,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 9.99999975e-05
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
