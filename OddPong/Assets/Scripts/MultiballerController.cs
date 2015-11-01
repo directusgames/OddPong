@@ -57,6 +57,6 @@ public class MultiballerController : MonoBehaviour {
 			}
 		}
 		
-		StartCoroutine(transform.parent.gameObject.GetComponent<BlackHoleController>().ScaleDown());
+		transform.parent.gameObject.GetComponent<BlackHoleController>().ScaleDown();
 	}
 }
