@@ -3,17 +3,11 @@ using System.Collections;
 
 public class BallCollide : MonoBehaviour
 {
-    public GameObject m_barrierObject; // Get own game tag.
-    public BoxCollider2D m_barrier;
-    public GameObject m_playerOne;
-    public GameObject m_playerTwo;
-    public GameObject m_mainCamera;
-    private GameManager m_mainScript;
+    public GameManager m_mainScript;
 
     // Use this for initialization
     void Start()
     {
-        m_mainScript = m_mainCamera.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +18,6 @@ public class BallCollide : MonoBehaviour
 
     void OnCollisionEnter2D()
     {
-        m_mainScript.playerScores(m_barrierObject.gameObject.tag);
+        m_mainScript.playerScores(this.gameObject.tag);
     }
 }
