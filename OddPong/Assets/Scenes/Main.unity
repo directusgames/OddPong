@@ -1262,7 +1262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOne: {fileID: 606118405}
   playerTwo: {fileID: 530603489}
-  ball: {fileID: 138798, guid: 6caad25e2ee85f94c8ddb9288ff308b2, type: 2}
   bgMusic: {fileID: 375653354}
   paused: 0
 --- !u!1 &1534002699
