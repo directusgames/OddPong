@@ -515,7 +515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &606118405 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 106712, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
@@ -868,7 +868,7 @@ Transform:
   m_LocalScale: {x: 1.61046946, y: 1.61046946, z: 1.61046946}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &832237171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   playerTwo: {fileID: 992970905}
   pauseMenu: {fileID: 999938975}
   bgMusic: {fileID: 375653354}
-  paused: 0
+  showingPauseMenu: 0
 --- !u!1 &1534002699
 GameObject:
   m_ObjectHideFlags: 0
