@@ -5,25 +5,20 @@
 */
 public class UserInput : MonoBehaviour
 {
-    public Rigidbody2D playerBody;
     public float moveSpeed;
-    public KeyCode moveUp;
-    public KeyCode moveDown;
+    public string playerAxis;
+
+    private Rigidbody2D _playerBody;
+
+    void Start()
+    {
+        _playerBody = GetComponent<Rigidbody2D>();
+    }
 
     // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
-        float upDown = 0.0f;
-
-        if (Input.GetKey(moveUp))
-        {
-            upDown = 1.0f;
-        }
-        else if (Input.GetKey(moveDown))
-        {
-            upDown = -1.0f;
-        }
-
-        playerBody.AddForce(new Vector3(0.0f, upDown, 0.0f) * moveSpeed);
+        float axis = Input.GetAxis(playerAxis);
+        _playerBody.AddForce(new Vector3(0.0f, axis, 0.0f) * moveSpeed);
     }
 }
