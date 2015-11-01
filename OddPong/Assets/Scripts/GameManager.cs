@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public int m_maxScore;
     public Text m_outputText;
 
+    // public int m_startCounter = 3;
+    public bool m_startGame;
+
     // A match consists of multiple rounds (defined by m_maxScore).
     public bool m_matchCooldown;
     public float m_matchCooldownLength;
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        m_startGame = true;
         p1Controller = m_playerOne.GetComponent<Player>();
         p2Controller = m_playerTwo.GetComponent<Player>();
         resetGame();
@@ -92,24 +96,34 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!m_matchCooldown) // Game is ongoing.
+        if (m_startGame)
         {
-            if (m_roundCooldown) // Round is in cooldown.
+            // Start game menu // just a count down.
+            // Make sure to set to false for event manager.
+            m_startGame = false;
+        }
+        else
+        {
+            if (!m_matchCooldown) // Game is ongoing.
             {
-                var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
-                if (roundDiff >= m_roundCooldownLength)
+                if (m_roundCooldown) // Round is in cooldown.
                 {
-                    resetRound();
-                    m_roundCooldown = false;
+                    var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
+                    if (roundDiff >= m_roundCooldownLength)
+                    {
+                        resetRound();
+                        m_roundCooldown = false;
+                    }
                 }
             }
-        } else // Game is in cooldown.
-        {
-            var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
-            if (matchDiff >= m_matchCooldownLength)
+            else // Game is in cooldown.
             {
-                resetGame();
-                m_matchCooldown = false;
+                var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
+                if (matchDiff >= m_matchCooldownLength)
+                {
+                    resetGame();
+                    m_matchCooldown = false;
+                }
             }
         }
     }

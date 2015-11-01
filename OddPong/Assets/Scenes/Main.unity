@@ -562,6 +562,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 348425719}
+  - 114: {fileID: 348425720}
   m_Layer: 0
   m_Name: Eventmanager
   m_TagString: Untagged
@@ -581,6 +582,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &348425720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348425718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1ae492490bab848aacd5bd62a1b0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameManager: {fileID: 1480861403}
+  m_gravityManipulator: {fileID: 495732404}
+  m_gravityInterval: 5
+  m_gravityPrev: 0
+  m_canUseEffects: 0
+  m_canUseGravity: 0
+  m_timeBeforeEffects: 3
+  m_effectTimePrev: 0
 --- !u!1 &375653353
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,11 +788,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gravity: {x: 0, y: 0}
   m_ballManager: {fileID: 827787784}
-  m_roundTime: 15
-  m_intervalTime: 4
-  m_inRound: 0
+  m_swapNormal: 0
+  m_normalPrevTime: 0
   m_swapPlayer: 0
-  m_prevTime: 0
+  m_swapTime: 3
+  m_swapPrevTime: 0
 --- !u!4 &495732405
 Transform:
   m_ObjectHideFlags: 0
@@ -1789,6 +1809,7 @@ MonoBehaviour:
   m_initialBallSpeed: 350
   m_maxScore: 5
   m_outputText: {fileID: 314837799}
+  m_startGame: 0
   m_matchCooldown: 0
   m_matchCooldownLength: 5
   m_roundCooldown: 0
