@@ -12,12 +12,12 @@ public class GameInput : MonoBehaviour
     private UserInput p1Input;
     private UserInput p2Input;
 
-    public bool paused;
+    public bool showingPauseMenu;
 
     // Use this for initialization
     void Start()
     {
-        paused = false;
+        showingPauseMenu = false;
         pauseMenu.SetActive(false);
         p1Input = playerOne.GetComponent<UserInput>();
         p2Input = playerTwo.GetComponent<UserInput>();
@@ -54,7 +54,7 @@ public class GameInput : MonoBehaviour
             }
         }
 
-        paused = shouldPause;
+        showingPauseMenu = shouldPause;
     }
 
     void Update()
@@ -62,11 +62,14 @@ public class GameInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Toggle paused mode.
-            SetPaused(!paused);
+            SetPaused(!showingPauseMenu);
         }
-        else if (paused && Input.GetKeyDown(KeyCode.Q))
+        if (showingPauseMenu)
         {
-            DoApplicationQuit();
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                DoApplicationQuit();
+            }
         }
     }
 

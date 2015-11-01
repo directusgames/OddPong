@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BgCycle : MonoBehaviour {
-
+public class BgCycle : MonoBehaviour
+{
     public Renderer backgroundImage;
     public Color[] colors;
 
@@ -11,12 +11,11 @@ public class BgCycle : MonoBehaviour {
 
     public float changeColourTime = 2.0f;
 
-    private float lastChange = 0.0f;
     private float timer = 0.0f;
 
     void Start()
     {
-        for(int i = 0; i < colors.Length; i++)
+        for (int i = 0; i < colors.Length; i++)
         {
             colors[i].a = backgroundImage.material.color.a;
         }
