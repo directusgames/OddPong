@@ -21,7 +21,7 @@ public class GravityEffectController : MonoBehaviour {
 		baseColor = GetComponent<Renderer>().material.color;
 		Debug.Log ("Effect color: " + GetComponent<Renderer>().material.color);
 		currentAlpha = 0;
-		//EffectOn ();
+		//	EffectOn ();
 		
 	}
 	

@@ -3,6 +3,8 @@
 public class GravityManip : MonoBehaviour, GameEvent  {
     public Vector2 m_gravity;
     public BallManager m_ballManager;
+    
+    public GameObject gravEffectLeft, gravEffectRight;
 
     // Left and right strong vectors.
     // Forces player to play 'keepuppy' with themselves.
@@ -24,6 +26,16 @@ public class GravityManip : MonoBehaviour, GameEvent  {
         Debug.Log("stoprandomevent");
         // Apply normal gravity.
         m_ballManager.AntiGravBalls();
+        
+        if(m_gravity == m_strongLeft)
+        {
+			gravEffectLeft.GetComponent<GravityEffectController>().EffectOff ();
+        }
+        else
+        {
+			gravEffectRight.GetComponent<GravityEffectController>().EffectOff ();
+        }
+        
         Physics2D.gravity = new Vector2(0f, 0f);
         m_running = false;
     }
@@ -34,7 +46,14 @@ public class GravityManip : MonoBehaviour, GameEvent  {
         m_ballManager.GravBalls(); // Allow ball to experience gravity.
         // Randomise intial side of gravity.
         float rand = Random.Range(0.0f, 1.0f);
-        m_gravity = rand <= 0.4f ? m_strongLeft : m_strongRight;
+        if (rand <= 0.4f) {
+	    	m_gravity = m_strongLeft;
+	    	gravEffectLeft.GetComponent<GravityEffectController>().EffectOn ();
+    	} else {
+    		m_gravity = m_strongRight;
+			gravEffectRight.GetComponent<GravityEffectController>().EffectOn ();
+    	}
+        
         Physics2D.gravity = m_gravity;
         m_prevTime = Time.fixedTime;
         m_running = true;
