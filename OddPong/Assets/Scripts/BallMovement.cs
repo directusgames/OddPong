@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BallMovement : MonoBehaviour
 {
-    public int startSpeed;
+    public float startSpeed;
+    public float timeForFullSpeedUp = 2.0f;
 
     public GameObject racquetLeft, racquetRight;
 
     private AudioSource hitSound;
+    private Rigidbody2D _rigid;
+    private bool _raiseSpeed;
 
     void Start()
     {
         hitSound = GetComponent<AudioSource>();
+        _rigid = GetComponent<Rigidbody2D>();
     }
 
     //Check which section of racquet the ball hits
@@ -21,6 +24,28 @@ public class BallMovement : MonoBehaviour
         //2 = middle of paddle
         //3 = bottom of paddle
         return (ballPos.y - racketPos.y) / racketHeight;
+    }
+
+    public void GetUpToSpeed()
+    {
+        _raiseSpeed = true;
+    }
+
+    void FixedUpdate()
+    {
+        if (_raiseSpeed)
+        {
+            float speed = _rigid.velocity.magnitude;
+            if (speed < startSpeed)
+            {
+                float increase = 1.0f + speed * Time.fixedDeltaTime / timeForFullSpeedUp;
+                _rigid.velocity *= increase;
+            }
+            else
+            {
+                _raiseSpeed = false;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -38,7 +63,7 @@ public class BallMovement : MonoBehaviour
 
             Vector2 dir = new Vector2(1, y).normalized;
 
-            GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
+            _rigid.velocity = dir * startSpeed;
         }
         else if (col.gameObject.name == racquetRight.name)
         {
@@ -49,7 +74,7 @@ public class BallMovement : MonoBehaviour
 
             Vector2 dir = new Vector2(-1, y).normalized;
 
-            GetComponent<Rigidbody2D>().velocity = dir * startSpeed;
+            _rigid.velocity = dir * startSpeed;
         }
     }
 }

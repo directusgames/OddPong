@@ -44,6 +44,7 @@ public class BallManager : MonoBehaviour
         foreach (var ball in balls)
         {
             ball.GetComponent<Rigidbody2D>().gravityScale = 0;
+            ball.GetComponent<BallMovement>().GetUpToSpeed();
         }
     }
 
