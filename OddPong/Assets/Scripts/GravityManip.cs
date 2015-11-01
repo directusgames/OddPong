@@ -3,7 +3,7 @@
 public class GravityManip : MonoBehaviour, GameEvent  {
     public Vector2 m_gravity;
     public BallManager m_ballManager;
-    
+    public FadingAudioSource m_gravitySound;
     public GameObject gravEffectLeft, gravEffectRight;
 
     // Left and right strong vectors.
@@ -37,14 +37,15 @@ public class GravityManip : MonoBehaviour, GameEvent  {
         }
         
         Physics2D.gravity = new Vector2(0f, 0f);
+        m_gravitySound.FadeOut();
         m_running = false;
     }
 
-    // Target Player 1.
+    // Target random player with gravity.
     public void StartRandomEvent()
     {
         m_ballManager.GravBalls(); // Allow ball to experience gravity.
-        // Randomise intial side of gravity.
+        // Randomise initial side of gravity.
         float rand = Random.Range(0.0f, 1.0f);
         if (rand <= 0.4f) {
 	    	m_gravity = m_strongLeft;
@@ -56,11 +57,13 @@ public class GravityManip : MonoBehaviour, GameEvent  {
         
         Physics2D.gravity = m_gravity;
         m_prevTime = Time.fixedTime;
+        m_gravitySound.Play();
         m_running = true;
     }
 
     void Start()
     {
+        m_gravitySound.FadeTime = m_animateTime;
     }
 
     void Update()
