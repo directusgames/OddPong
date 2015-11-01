@@ -1289,14 +1289,6 @@ Prefab:
       value: 
       objectReference: {fileID: 1139763944}
     - target: {fileID: 11491220, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
-      propertyPath: moveUp
-      value: 105
-      objectReference: {fileID: 0}
-    - target: {fileID: 11491220, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
-      propertyPath: moveDown
-      value: 107
-      objectReference: {fileID: 0}
-    - target: {fileID: 11491220, guid: 69881fb1c79696a41b2ab6e52ab16627, type: 2}
       propertyPath: playerAxis
       value: PlayerTwoMove
       objectReference: {fileID: 0}
