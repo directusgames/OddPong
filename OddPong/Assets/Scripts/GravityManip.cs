@@ -47,7 +47,7 @@ public class GravityManip : MonoBehaviour, GameEvent  {
         m_ballManager.GravBalls(); // Allow ball to experience gravity.
         // Randomise initial side of gravity.
         float rand = Random.Range(0.0f, 1.0f);
-        if (rand <= 0.4f) {
+        if (rand <= 0.5f) {
 	    	m_gravity = m_strongLeft;
 	    	gravEffectLeft.GetComponent<GravityEffectController>().EffectOn ();
     	} else {

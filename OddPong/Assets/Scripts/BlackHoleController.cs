@@ -7,9 +7,11 @@ public class BlackHoleController : MonoBehaviour
     /// Time in seconds to take when coming in/out.
     /// </summary>
     public float timeToScale = 2.0f;
+    public float maxLifetime = 8.0f;
 
     private FadingAudioSource _loopingSound;
     private ScalingMode _scalingMode = ScalingMode.ScaleUp;
+    private float _startTime;
 
     private enum ScalingMode
     {
@@ -24,6 +26,7 @@ public class BlackHoleController : MonoBehaviour
         _loopingSound = GetComponentInChildren<FadingAudioSource>();
         _loopingSound.FadeTime = timeToScale;
         _loopingSound.Play();
+        _startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -57,6 +60,13 @@ public class BlackHoleController : MonoBehaviour
                 // We're done, can destroy ourselves.
                 _scalingMode = ScalingMode.None;
                 Destroy(gameObject);
+            }
+        }
+        else // should we timeout and start collapsing ourselves?
+        {
+            if (Time.time - _startTime > maxLifetime)
+            {
+                ScaleDown();
             }
         }
     }
