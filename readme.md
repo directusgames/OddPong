@@ -7,3 +7,6 @@ This game was created for a gamejam with the theme \<REDACTED>.
 Use W/S to control the left paddle, and I/K to control the right paddle.
 
 Press ESC to pause the game, then ESC again to resume or Q to exit.
+
+# Attributions
+Attirbutions are given in the directory the files are located in, in an attribution.md file.
