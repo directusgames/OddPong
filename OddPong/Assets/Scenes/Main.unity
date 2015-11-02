@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2a555ebdddf274d8f86b58802999f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackHole: {fileID: 199570, guid: 40d8fcf48def51344859cc4bf058128e, type: 2}
+  blackHole: {fileID: 199570, guid: d69cca46faf64494e8e9bcaa804bba30, type: 2}
 --- !u!4 &269389842
 Transform:
   m_ObjectHideFlags: 0
@@ -861,6 +861,7 @@ GameObject:
   - 50: {fileID: 606118408}
   - 114: {fileID: 606118407}
   - 114: {fileID: 606118406}
+  - 68: {fileID: 606118413}
   m_Layer: 0
   m_Name: Player One
   m_TagString: Player One
@@ -911,7 +912,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!4 &606118409
 Transform:
@@ -932,13 +933,13 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606118405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: .25, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .5, y: 1}
 --- !u!23 &606118411
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -972,6 +973,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606118405}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!68 &606118413
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 606118405}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: .494442135, y: .497221529}
+  - {x: .488299549, y: -.500146449}
 --- !u!1 &688977294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1594,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!61 &992970909
 BoxCollider2D:
@@ -1592,9 +1607,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -.25, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .5, y: 1}
 --- !u!23 &992970910
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2068,6 +2083,7 @@ GameObject:
   - 23: {fileID: 1470013585}
   - 61: {fileID: 1470013586}
   - 114: {fileID: 1470013589}
+  - 50: {fileID: 1470013590}
   m_Layer: 0
   m_Name: ScoreBarrier (right)
   m_TagString: Player One
@@ -2143,6 +2159,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainScript: {fileID: 1480861403}
+--- !u!50 &1470013590
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470013584}
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &1480861397
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2317,7 @@ GameObject:
   - 33: {fileID: 1534002703}
   - 23: {fileID: 1534002702}
   - 61: {fileID: 1534002704}
+  - 50: {fileID: 1534002701}
   m_Layer: 0
   m_Name: BounceBarrier (bottom)
   m_TagString: Untagged
@@ -2300,10 +2333,26 @@ Transform:
   m_GameObject: {fileID: 1534002699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -250, z: 0}
-  m_LocalScale: {x: 800, y: 100, z: 1}
+  m_LocalScale: {x: 912, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 1542073969}
   m_RootOrder: 3
+--- !u!50 &1534002701
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1534002699}
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!23 &1534002702
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2391,6 +2440,7 @@ GameObject:
   - 23: {fileID: 1551955897}
   - 61: {fileID: 1551955898}
   - 114: {fileID: 1551955901}
+  - 50: {fileID: 1551955902}
   m_Layer: 0
   m_Name: ScoreBarrier (left)
   m_TagString: Player Two
@@ -2466,6 +2516,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainScript: {fileID: 1480861403}
+--- !u!50 &1551955902
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1551955896}
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &1561017731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,6 +2936,7 @@ GameObject:
   - 33: {fileID: 2106671752}
   - 23: {fileID: 2106671750}
   - 61: {fileID: 2106671754}
+  - 50: {fileID: 2106671751}
   m_Layer: 0
   m_Name: BounceBarrier (top)
   m_TagString: Untagged
@@ -2901,6 +2968,22 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!50 &2106671751
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2106671749}
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!33 &2106671752
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2916,7 +2999,7 @@ Transform:
   m_GameObject: {fileID: 2106671749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 250, z: 0}
-  m_LocalScale: {x: 800, y: 100, z: 1}
+  m_LocalScale: {x: 912, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 1542073969}
   m_RootOrder: 2
