@@ -71,6 +71,7 @@ public class BallMovement : MonoBehaviour
             float y = hitFactor(transform.position, col.transform.position, col.collider.bounds.size.y);
 
             Vector2 dir = new Vector2(1, y).normalized;
+            Debug.Log ("Direction: " + dir);
 
             _rigid.velocity = dir * startSpeed;
         }
