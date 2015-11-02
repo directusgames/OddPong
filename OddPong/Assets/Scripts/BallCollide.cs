@@ -16,8 +16,12 @@ public class BallCollide : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        m_mainScript.playerScores(this.gameObject.tag);
+		if(coll.gameObject.tag == "Ball")
+		{
+	        m_mainScript.playerScores(this.gameObject.tag);
+	        Debug.Log ("player scored");
+	    }
     }
 }
