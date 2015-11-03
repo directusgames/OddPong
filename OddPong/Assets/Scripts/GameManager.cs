@@ -19,38 +19,39 @@ public class GameManager : MonoBehaviour
     public int m_maxScore;
     public Text m_outputText;
 
-    // public int m_startCounter = 3;
     public bool m_startGame;
 
     // A match consists of multiple rounds (defined by m_maxScore).
     public bool m_matchCooldown;
     public float m_matchCooldownLength;
     private float m_matchCooldownPrev;
+
     public bool m_roundCooldown;
     public float m_roundCooldownLength;
     private float m_roundCooldownPrev;
-    private Vector3 m_lastWinnerPosition;
 
+    private Vector3 m_lastWinnerPosition;
+    
     void Start()
     {
+        m_matchCooldown = true;
         m_startGame = true;
         p1Controller = m_playerOne.GetComponent<Player>();
         p2Controller = m_playerTwo.GetComponent<Player>();
 
         // Randomly pick who was the previous 'winner' so we have a starting point.
         m_lastWinnerPosition = (Random.Range(0.0f, 1.0f) >= 0.5f) ? p1Controller.transform.position : p2Controller.transform.position;
-        resetGame();
     }
 
-    void resetGame()
+    void startGame()
     {
         p1Controller.reset();
         p2Controller.reset();
         m_outputText.text = "";
-        DoBallSpawn();
+        DoBallSpawn(); // Spawn ball after count down.
     }
 
-    void resetRound()
+    void startRound()
     {
         m_outputText.text = "";
         DoBallSpawn();
@@ -95,34 +96,29 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_startGame)
+        if (!m_matchCooldown) // Game is ongoing.
         {
-            // Start game menu // just a count down.
-            // Make sure to set to false for event manager.
-            m_startGame = false;
-        }
-        else
-        {
-            if (!m_matchCooldown) // Game is ongoing.
+            if (m_roundCooldown) // Round is in cooldown.
             {
-                if (m_roundCooldown) // Round is in cooldown.
+                var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
+                m_outputText.text = (roundDiff / m_roundCooldownLength * 100).ToString() + "%";
+                if (roundDiff >= m_roundCooldownLength)
                 {
-                    var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
-                    if (roundDiff >= m_roundCooldownLength)
-                    {
-                        resetRound();
-                        m_roundCooldown = false;
-                    }
+                    startRound();
+                    m_roundCooldown = false;
                 }
             }
-            else // Game is in cooldown.
+        }
+        else // Game is in cooldown.
+        {
+            var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
+            m_outputText.enabled = true;
+            m_outputText.text = (matchDiff / m_matchCooldownLength * 100).ToString() + "%";
+            if (matchDiff >= m_matchCooldownLength)
             {
-                var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
-                if (matchDiff >= m_matchCooldownLength)
-                {
-                    resetGame();
-                    m_matchCooldown = false;
-                }
+                startGame();
+                m_matchCooldown = false;
+                m_startGame = false;
             }
         }
     }
