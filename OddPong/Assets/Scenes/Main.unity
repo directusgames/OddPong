@@ -188,7 +188,7 @@ GameObject:
   - 82: {fileID: 80984904}
   m_Layer: 0
   m_Name: Round Win Sound
-  m_TagString: Untagged
+  m_TagString: Pausable Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874861273}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!82 &80984904
 AudioSource:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874861273}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!82 &103456403
 AudioSource:
   m_ObjectHideFlags: 0
@@ -508,7 +508,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &314837797
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!114 &348425720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ GameObject:
   - 82: {fileID: 375653354}
   m_Layer: 0
   m_Name: BGMusic
-  m_TagString: Untagged
+  m_TagString: Pausable Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -738,7 +738,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874861273}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &416744940
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &495732403
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,10 +843,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 321.760529, y: 165.390869, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1194441195}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &606118405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1045,7 @@ Transform:
   m_LocalScale: {x: 800, y: 400, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &688977299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,7 +1223,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &806205583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1513,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &874861272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,13 +1539,15 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1194441195}
   - {fileID: 375653355}
   - {fileID: 1592961076}
   - {fileID: 80984903}
   - {fileID: 1258532585}
   - {fileID: 103456402}
+  - {fileID: 2070971927}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &885929758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1836,7 @@ Transform:
   - {fileID: 2078858275}
   - {fileID: 1561017732}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &1139763942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,7 +1936,7 @@ GameObject:
   - 114: {fileID: 1194441197}
   m_Layer: 0
   m_Name: Gravity Pull Sound
-  m_TagString: Untagged
+  m_TagString: Pausable Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1947,10 +1948,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1194441194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -321.760529, y: -165.390869, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 495732405}
+  m_Father: {fileID: 874861273}
   m_RootOrder: 0
 --- !u!82 &1194441196
 AudioSource:
@@ -2062,7 +2063,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874861273}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!82 &1258532586
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2392,7 +2393,7 @@ Transform:
   m_Children:
   - {fileID: 885929759}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1480861403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2556,7 +2557,7 @@ Transform:
   - {fileID: 2106671753}
   - {fileID: 1534002700}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1551955896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,7 +2886,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 874861273}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1881379367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2915,7 @@ Transform:
   - {fileID: 606118409}
   - {fileID: 992970904}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1977289279
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,7 +3010,7 @@ GameObject:
   - 114: {fileID: 2070971925}
   m_Layer: 0
   m_Name: Wormhole Loop Sound
-  m_TagString: Untagged
+  m_TagString: Pausable Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3109,8 +3110,8 @@ Transform:
   m_LocalPosition: {x: -96.7902603, y: -33.7884331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 874861273}
+  m_RootOrder: 6
 --- !u!1 &2078858271
 GameObject:
   m_ObjectHideFlags: 0
