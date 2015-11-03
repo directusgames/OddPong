@@ -4,10 +4,11 @@ using System.Collections;
 
 public class Intro : MonoBehaviour {
 
+    public Text m_enterStart;
     public Text m_oddText;
-    public RectTransform m_oddTransform;
-
     public Text m_pongText;
+
+    public RectTransform m_oddTransform;
     public RectTransform m_pongTransform;
 
     public Image m_wormHole;
@@ -25,6 +26,7 @@ public class Intro : MonoBehaviour {
     void Start () {
         m_time = Time.fixedTime;
 
+        m_enterStart.enabled = false;
         m_pongText.fontSize = 0;
         m_pongText.enabled = false;
 
@@ -77,8 +79,10 @@ public class Intro : MonoBehaviour {
     private IEnumerator wormholeTitle()
     {
         // Set up in title position.
-        m_oddTransform.localPosition = new Vector3(-136.58f, 0f, 0f);
-        m_pongTransform.localPosition = new Vector3(159.96f, 0f, 0f);
+        m_oddTransform.localPosition = new Vector3(-117.51f, -3.7f, 0f);
+        m_pongTransform.localPosition = new Vector3(132.14f, -3f, 0f);
+        m_oddText.text = "Odd"; // Drop the hipster apostrophe's.
+        m_oddText.fontStyle = FontStyle.Bold;
         m_oddText.fontSize = 100;
         m_pongText.fontSize = 100;
         m_oddText.enabled = true;
@@ -87,7 +91,9 @@ public class Intro : MonoBehaviour {
         // Position spinning wormhole between both texts.
         m_wormHole.enabled = true;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+
+        m_enterStart.enabled = true;
 
         // Rotate text around respecting Z of wormhole?
         // While rotating at the bottom of the screen [press enter to play]
@@ -141,6 +147,10 @@ public class Intro : MonoBehaviour {
                 StartCoroutine(wormholeTitle());
                 m_swirlyTitle = false;
             }
+        }
+        if (Input.GetKey(KeyCode.KeypadEnter))
+        {
+            Application.LoadLevel("Main");
         }
 	}
 }
