@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeSpeed: .5
   fadeTime: .00499999989
-  alphaVal: 60
+  alphaVal: 90
 --- !u!23 &1561017734
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3015,7 +3015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeSpeed: .5
   fadeTime: .00499999989
-  alphaVal: 60
+  alphaVal: 90
 --- !u!1 &2106671749
 GameObject:
   m_ObjectHideFlags: 0
