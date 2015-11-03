@@ -13,7 +13,6 @@ public class BlackholeTwirl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(GetComponent<RectTransform>().rotation);
         GetComponent<RectTransform>().Rotate(
             m_rotation.x,
             m_rotation.y,

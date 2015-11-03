@@ -5,13 +5,16 @@ using System.Collections;
 public class Intro : MonoBehaviour {
 
     public Text m_oddText;
+    public RectTransform m_oddTransform;
+
     public Text m_pongText;
-    public Text m_oddPongText;
+    public RectTransform m_pongTransform;
+
     public Image m_wormHole;
 
     public int m_maxFontSize = 220;
 
-    public float m_time; // Measure start of game.
+    private float m_time; // Measure start of game.
     public float m_openingWait = 5f; // Length in seconds before showing animation.
 
     private bool m_increaseOdd;
@@ -58,7 +61,7 @@ public class Intro : MonoBehaviour {
     private IEnumerator dramaticOdd()
     {
         // Reached max size, now flash small to big for effect.
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         m_oddText.fontSize = 10;
         yield return new WaitForSeconds(0.5f);
         m_oddText.fontSize = 120;
@@ -69,6 +72,27 @@ public class Intro : MonoBehaviour {
 
         m_oddText.enabled = false;
         m_increasePong = true; // Only animate pong when odd is done.
+    }
+
+    private IEnumerator wormholeTitle()
+    {
+        // Set up in title position.
+        m_oddTransform.localPosition = new Vector3(-136.58f, 0f, 0f);
+        m_pongTransform.localPosition = new Vector3(159.96f, 0f, 0f);
+        m_oddText.fontSize = 100;
+        m_pongText.fontSize = 100;
+        m_oddText.enabled = true;
+        m_pongText.enabled = true;
+
+        // Position spinning wormhole between both texts.
+        m_wormHole.enabled = true;
+
+        yield return new WaitForSeconds(1f);
+
+        // Rotate text around respecting Z of wormhole?
+        // While rotating at the bottom of the screen [press enter to play]
+
+        // Odd and Pong get sucked into the black hole showing the menu?
     }
 
     void Update() {
@@ -114,14 +138,8 @@ public class Intro : MonoBehaviour {
             }
             if (m_swirlyTitle)
             {
-                m_wormHole.enabled = true;
-                // Position odd text left.
-                // Position odd text right.
-                // Position spinning wormhole between both texts.
-                // Rotate text around respecting Z of wormhole?
-                // While rotating at the bottom of the screen [press enter to play]
-
-                // Odd and Pong get sucked into the black hole showing the menu?
+                StartCoroutine(wormholeTitle());
+                m_swirlyTitle = false;
             }
         }
 	}
