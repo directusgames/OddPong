@@ -23,7 +23,7 @@ public class BlackHoleController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _loopingSound = GetComponentInChildren<FadingAudioSource>();
+        _loopingSound = GameObject.Find ("Wormhole Loop Sound").GetComponent<FadingAudioSource>();
         _loopingSound.FadeTime = timeToScale;
         _loopingSound.Play();
         _startTime = Time.time;
