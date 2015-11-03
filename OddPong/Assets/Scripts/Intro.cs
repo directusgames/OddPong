@@ -148,7 +148,7 @@ public class Intro : MonoBehaviour {
                 m_swirlyTitle = false;
             }
         }
-        if (Input.GetKey(KeyCode.KeypadEnter))
+        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Escape))
         {
             Application.LoadLevel("Main");
         }
