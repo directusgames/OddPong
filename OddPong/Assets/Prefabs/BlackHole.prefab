@@ -215,7 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39e1d547c47d4d41acf5f069bc6af10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToScale: 2
+  timeToScaleUp: 2
+  timeToScaleDown: .5
   maxLifetime: 8
   _scalingMode: 0
 --- !u!114 &11419782
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b53e820e80dc574da8c108bc8efe183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  massInfluence: 1
+  massInfluence: 2
   attractionPower: 5
   matchThisTag: Ball
 --- !u!114 &11497626
@@ -292,7 +293,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: massInfluence
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attractionPower
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 121944}

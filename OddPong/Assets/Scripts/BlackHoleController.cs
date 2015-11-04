@@ -6,7 +6,8 @@ public class BlackHoleController : MonoBehaviour
     /// <summary>
     /// Time in seconds to take when coming in/out.
     /// </summary>
-    public float timeToScale = 2.0f;
+    public float timeToScaleUp = 2.0f;
+    public float timeToScaleDown = 0.5f;
     public float maxLifetime = 8.0f;
 
     private FadingAudioSource _loopingSound;
@@ -24,7 +25,7 @@ public class BlackHoleController : MonoBehaviour
     void Start()
     {
         _loopingSound = GameObject.Find ("Wormhole Loop Sound").GetComponent<FadingAudioSource>();
-        _loopingSound.FadeTime = timeToScale;
+        _loopingSound.FadeTime = timeToScaleDown;
         _loopingSound.Play();
         _startTime = Time.time;
     }
@@ -36,7 +37,7 @@ public class BlackHoleController : MonoBehaviour
         {
             if (transform.localScale.x < 1.0f)
             {
-                float scaleAmount = 1.0f / timeToScale * Time.deltaTime;
+                float scaleAmount = 1.0f / timeToScaleUp * Time.deltaTime;
                 transform.localScale = new Vector3(Mathf.Min(1.0f, transform.localScale.x + scaleAmount),
                                                    Mathf.Min(1.0f, transform.localScale.y + scaleAmount),
                                                    1.0f);
@@ -50,7 +51,7 @@ public class BlackHoleController : MonoBehaviour
         {
             if (transform.localScale.x > 0.0f)
             {
-                float scaleAmount = 1.0f / timeToScale * Time.deltaTime;
+                float scaleAmount = 1.0f / timeToScaleDown * Time.deltaTime;
                 transform.localScale = new Vector3(Mathf.Max(0.0f, transform.localScale.x - scaleAmount),
                                                    Mathf.Max(0.0f, transform.localScale.y - scaleAmount),
                                                    1.0f);
@@ -73,6 +74,7 @@ public class BlackHoleController : MonoBehaviour
 
     public void ScaleDown()
     {
+		transform.GetChild(0).GetComponent<CircleCollider2D>().enabled = false;
         _scalingMode = ScalingMode.ScaleDown;
         _loopingSound.FadeOut();
     }

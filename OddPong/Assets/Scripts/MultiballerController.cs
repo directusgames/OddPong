@@ -35,7 +35,7 @@ public class MultiballerController : MonoBehaviour
     {
         //Disable attractor
         attractor.SetActive(false);
-		transform.parent.gameObject.GetComponent<BlackHoleController>().StopScaling();
+		//transform.parent.gameObject.GetComponent<BlackHoleController>().StopScaling();
 		
         //Disable collider
         GetComponent<CircleCollider2D>().enabled = false;
