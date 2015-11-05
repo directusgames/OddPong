@@ -15,7 +15,7 @@ public class BallMovement : MonoBehaviour
 
     void Start()
     {
-    	txtBallVel = GameObject.Find("Ball Velocity").GetComponent<Text>();
+        txtBallVel = GameObject.Find("Ball Velocity").GetComponent<Text>();
         if (speedUpPerSecond <= 0.0f)
         {
             speedUpPerSecond = startSpeed;
@@ -23,10 +23,13 @@ public class BallMovement : MonoBehaviour
         hitSound = GetComponent<AudioSource>();
         _rigid = GetComponent<Rigidbody2D>();
     }
-    
+
     void Update()
     {
-    	txtBallVel.text = "X Velocity: " +_rigid.velocity.x;
+        if (txtBallVel)
+        {
+            txtBallVel.text = "X Velocity: " + _rigid.velocity.x;
+        }
     }
 
     //Check which section of racquet the ball hits
@@ -67,8 +70,8 @@ public class BallMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-		Vector2 dir;
-    	
+        Vector2 dir;
+
         if (this.isActiveAndEnabled)
         {
             // Randomly alter the pitch so we don't go crazy hearing the same sound.
@@ -80,14 +83,14 @@ public class BallMovement : MonoBehaviour
 
             float y = hitFactor(transform.position, col.transform.position, col.collider.bounds.size.y);
 
-            if(_rigid.velocity.x > 0)
+            if (_rigid.velocity.x > 0)
             {
-            	dir = new Vector2(1, y).normalized;        
-			}
-			else
-			{
-				dir = new Vector2(-1, y).normalized;  
-			}
+                dir = new Vector2(1, y).normalized;
+            }
+            else
+            {
+                dir = new Vector2(-1, y).normalized;
+            }
             _rigid.velocity = dir * startSpeed;
         }
         else if (col.gameObject.name == racquetRight.name)
@@ -97,16 +100,16 @@ public class BallMovement : MonoBehaviour
                                 col.transform.position,
                                 col.collider.bounds.size.y);
 
-            if(_rigid.velocity.x < 0)
+            if (_rigid.velocity.x < 0)
             {
-            	dir = new Vector2(-1, y).normalized;
+                dir = new Vector2(-1, y).normalized;
             }
             else
             {
-				dir = new Vector2(1, y).normalized;
+                dir = new Vector2(1, y).normalized;
             }
-			
+
             _rigid.velocity = dir * startSpeed;
-        }        
+        }
     }
 }

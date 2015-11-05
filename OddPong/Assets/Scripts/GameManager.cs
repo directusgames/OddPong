@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     private float m_roundCooldownPrev;
 
     private Vector3 m_lastWinnerPosition;
-    
+
     void Start()
     {
         m_matchCooldown = true;
@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
             if (m_roundCooldown) // Round is in cooldown.
             {
                 var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
-                m_outputText.text = (roundDiff / m_roundCooldownLength * 100).ToString() + "%";
                 if (roundDiff >= m_roundCooldownLength)
                 {
                     startRound();
@@ -113,7 +112,6 @@ public class GameManager : MonoBehaviour
         {
             var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
             m_outputText.enabled = true;
-            m_outputText.text = (matchDiff / m_matchCooldownLength * 100).ToString() + "%";
             if (matchDiff >= m_matchCooldownLength)
             {
                 startGame();
