@@ -9,18 +9,22 @@ public class BallMovement : MonoBehaviour
 
     public GameObject racquetLeft, racquetRight;
 
-    private AudioSource hitSound;
+    private AudioSource _hitSound;
     private Rigidbody2D _rigid;
     private bool _raiseSpeed;
 
     void Start()
     {
-        txtBallVel = GameObject.Find("Ball Velocity").GetComponent<Text>();
+        var velocityTextObj = GameObject.Find("Ball Velocity");
+        if (velocityTextObj)
+        {
+            txtBallVel = velocityTextObj.GetComponent<Text>();
+        }
         if (speedUpPerSecond <= 0.0f)
         {
             speedUpPerSecond = startSpeed;
         }
-        hitSound = GetComponent<AudioSource>();
+        _hitSound = GetComponent<AudioSource>();
         _rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -75,8 +79,8 @@ public class BallMovement : MonoBehaviour
         if (this.isActiveAndEnabled)
         {
             // Randomly alter the pitch so we don't go crazy hearing the same sound.
-            hitSound.pitch = Random.Range(0.75f, 1.25f);
-            hitSound.Play();
+            _hitSound.pitch = Random.Range(0.75f, 1.25f);
+            _hitSound.Play();
         }
         if (col.gameObject.name == racquetLeft.name)
         {
