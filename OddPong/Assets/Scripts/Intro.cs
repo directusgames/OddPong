@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class Intro : MonoBehaviour {
 
     public Text m_enterStart;
     public Text m_oddText;
     public Text m_pongText;
+
+    public AudioSource m_overlyDramaticMusic;
 
     public RectTransform m_oddTransform;
     public RectTransform m_pongTransform;
@@ -24,6 +27,9 @@ public class Intro : MonoBehaviour {
     private bool m_swirlyTitle;
     
     void Start () {
+        m_overlyDramaticMusic.time = 31;
+        m_overlyDramaticMusic.Play();
+
         m_time = Time.fixedTime;
 
         m_enterStart.enabled = false;
