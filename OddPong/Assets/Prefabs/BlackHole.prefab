@@ -15,7 +15,7 @@ GameObject:
   - 82: {fileID: 8283232}
   m_Layer: 0
   m_Name: BlackHole
-  m_TagString: RandomEvent
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   massInfluence: 2
-  attractionPower: 5
+  attractionPower: 2.5
   matchThisTag: Ball
 --- !u!114 &11497626
 MonoBehaviour:
@@ -308,7 +308,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attractionPower
-      value: 5
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
