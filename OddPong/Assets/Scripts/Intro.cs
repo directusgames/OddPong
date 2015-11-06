@@ -27,9 +27,6 @@ public class Intro : MonoBehaviour {
     private bool m_swirlyTitle;
     
     void Start () {
-        m_overlyDramaticMusic.time = 31;
-        m_overlyDramaticMusic.Play();
-
         m_time = Time.fixedTime;
 
         m_enterStart.enabled = false;
