@@ -101,7 +101,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6242d6b97226799409d22222105a047f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .5
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 450
   speedUpPerSecond: 0
+  txtBallVel: {fileID: 0}
   racquetLeft: {fileID: 0}
   racquetRight: {fileID: 0}
 --- !u!212 &21225532
@@ -299,7 +300,7 @@ Prefab:
       objectReference: {fileID: 8300000, guid: 6242d6b97226799409d22222105a047f, type: 3}
     - target: {fileID: 0}
       propertyPath: m_Volume
-      value: .5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
