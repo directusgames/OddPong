@@ -7,7 +7,6 @@ public class GameInput : MonoBehaviour
     public GameObject playerTwo;
     public GameObject pauseMenu;
 
-    public AudioSource bgMusic;
     public AudioSource pauseSound;
     public AudioSource unpauseSound;
 
@@ -15,7 +14,6 @@ public class GameInput : MonoBehaviour
     private UserInput p2Input;
     
     private GameObject[] soundList;
-
 
     public bool showingPauseMenu;
 
@@ -27,7 +25,6 @@ public class GameInput : MonoBehaviour
         p1Input = playerOne.GetComponent<UserInput>();
         p2Input = playerTwo.GetComponent<UserInput>();
         soundList = GameObject.FindGameObjectsWithTag("Pausable Sound");        
-
     }
 
     void SetPaused(bool shouldPause)
@@ -57,7 +54,6 @@ public class GameInput : MonoBehaviour
         pauseMenu.SetActive(shouldPause);
         p1Input.enabled = !shouldPause;
         p2Input.enabled = !shouldPause;
-
         showingPauseMenu = shouldPause;
     }
 

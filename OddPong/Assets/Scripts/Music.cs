@@ -10,7 +10,14 @@ public class Music : MonoBehaviour
     {
         m_track = soundtrack[Random.Range(0, soundtrack.Length)];
         Debug.Log(m_track.name);
-        m_track.Play();
+        if (m_track.isActiveAndEnabled)
+        {
+            m_track.Play();
+        }
+        else
+        {
+            Debug.LogError("Track is disabled.");
+        }
     }
 
     void Update()

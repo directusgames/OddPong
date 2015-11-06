@@ -117,6 +117,10 @@ public class GameManager : MonoBehaviour
                 startGame();
                 m_matchCooldown = false;
                 m_startGame = false;
+                // appre 0.253
+                //saw 0.1
+                //visager airship 0.1
+                //dark 0.17
             }
         }
     }
