@@ -63,9 +63,16 @@ public class BallTextureEvent : MonoBehaviour, GameEvent {
 	
 	public void StopRandomEvent()
 	{
-		ball.transform.GetChild(0).GetComponent<Renderer>().material = originalTrailMat;
-		ball.transform.GetChild(1).gameObject.SetActive(false);
-		running = false;
+		if(ball != null)
+		{
+			ball.transform.GetChild(0).GetComponent<Renderer>().material = originalTrailMat;
+			ball.transform.GetChild(1).gameObject.SetActive(false);
+			running = false;
+		}
+		else
+		{
+			running = false;
+		}
 	}
 	
 //	public void EffectOn()
