@@ -480,7 +480,7 @@ GameObject:
   - 4: {fileID: 250507066}
   - 82: {fileID: 250507067}
   m_Layer: 0
-  m_Name: sawsquarenoise_-_10_-_RottenMage_SpaceJacked_OST_10
+  m_Name: sawsquarenoise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,11 +896,8 @@ MonoBehaviour:
   - {fileID: 250507067}
   - {fileID: 606086398}
   m_track: {fileID: 0}
-  m_playing: 0
-  m_startTime: 0
   m_output: {fileID: 1430115596}
   m_outputPrefix: 
-  m_continueFrom: 1
   m_playOnAwake: 1
 --- !u!1 &606086396
 GameObject:
@@ -912,7 +909,7 @@ GameObject:
   - 4: {fileID: 606086397}
   - 82: {fileID: 606086398}
   m_Layer: 0
-  m_Name: Arpeggiator by Drofxela
+  m_Name: Arpeggiator - Drofxela
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1678,7 +1675,7 @@ GameObject:
   - 4: {fileID: 860263545}
   - 82: {fileID: 860263546}
   m_Layer: 0
-  m_Name: Visager_-_18_-_Dark_Sanctum_Boss_Fight_Loop
+  m_Name: Dark Sanctum Boss Fight Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2297,7 +2294,7 @@ GameObject:
   - 4: {fileID: 1241116493}
   - 82: {fileID: 1241116494}
   m_Layer: 0
-  m_Name: Visager_-_08_-_Airship
+  m_Name: Airship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2596,7 +2593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .625, g: .844827592, b: 1, a: 1}
+  m_Color: {r: .625, g: .844827592, b: 1, a: .392156869}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2605,15 +2602,15 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: afa35fd03a511624f827069120c42bef, type: 3}
-    m_FontSize: 27
+    m_FontSize: 20
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Track: '
 --- !u!222 &1430115597
