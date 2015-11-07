@@ -6,25 +6,41 @@ using UnityEngine.Audio;
 public class Intro : MonoBehaviour {
 
     public Text m_selector;
+    private Music m_soundTrack;
+
+    public Text m_playText;
+    public Text m_settingsText;
+
+    private bool m_play;
+    private bool m_settings;
 
     void Start () {
+        m_play = true;
+        m_settings = false;
+        m_soundTrack = GameObject.FindGameObjectWithTag("Soundtrack").GetComponent<Music>();
     }
 
     void Update() {
-        // Did in 2 seconds, pretty trash.
-        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Return))
         {
-            if (m_selector.transform.localPosition.y == -44) {
+            if (m_play) {
+                m_soundTrack.rememberSong();
                 Application.LoadLevel("Main");
             }
+        } else if (Input.GetKey(KeyCode.DownArrow)) {
+             if (m_play) {
+                m_play = false;
+                m_settings = true;
+                m_settingsText.color = new Color(1f, 1f, 1f);
+                m_playText.CrossFadeColor(new Color(39f/255f, 39f/255f, 39f/255f), 0.25f, true, true);
+            }
+        } else if (Input.GetKey(KeyCode.UpArrow)) {
+            if (m_settings) {
+                m_settings = false;
+                m_play = true;
+                m_playText.CrossFadeColor(new Color(1f, 1f, 1f), 0.25f, true, true);
+                m_settingsText.color = new Color(39f / 255f, 39f / 255f, 39f / 255f);
+            }
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            m_selector.transform.localPosition = new Vector3(-46.23f, -104.5f, 0f);
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            m_selector.transform.localPosition = new Vector3(-46.23f, -44f, 0f);
-        }
-	}
+    }
 }
