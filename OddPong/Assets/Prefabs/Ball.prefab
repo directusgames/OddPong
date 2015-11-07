@@ -9,8 +9,27 @@ GameObject:
   m_Component:
   - 4: {fileID: 416206}
   - 96: {fileID: 9605522}
+  - 114: {fileID: 11457036}
   m_Layer: 0
   m_Name: Trail Renderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &117518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 451014}
+  - 33: {fileID: 3331462}
+  - 135: {fileID: 13523332}
+  - 23: {fileID: 2339920}
+  m_Layer: 0
+  m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,11 +62,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 485968}
   m_RootOrder: 0
+--- !u!4 &451014
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 23.6117401, y: 23.6117401, z: 23.6117401}
+  m_Children: []
+  m_Father: {fileID: 485968}
+  m_RootOrder: 1
 --- !u!4 &485968
 Transform:
   m_ObjectHideFlags: 1
@@ -55,12 +86,44 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.6000004, y: -16, z: -1}
+  m_LocalPosition: {x: -139.023285, y: -38.8255882, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416206}
+  - {fileID: 451014}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!23 &2339920
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117518}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 93e475522cad10e4da22ca83727418df, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3331462
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117518}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!50 &5092042
 Rigidbody2D:
   serializedVersion: 2
@@ -170,7 +233,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 99dce9085bbb2c44e9fd4b8b5091625d, type: 2}
+  - {fileID: 2100000, guid: 7f303360a96c9b5458338c6661fd0eca, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -205,6 +268,19 @@ TrailRenderer:
       rgba: 16777215
   m_MinVertexDistance: 0
   m_Autodestruct: 0
+--- !u!114 &11457036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1bf4ae4ab52c14da3caa70081f95b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -2
+  start: 0
 --- !u!114 &11458520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,8 +294,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 450
   speedUpPerSecond: 0
+  rotationSpeed: 250
+  txtBallVel: {fileID: 0}
   racquetLeft: {fileID: 0}
   racquetRight: {fileID: 0}
+--- !u!135 &13523332
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21225532
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -254,6 +344,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: startSpeed
       value: 450
       objectReference: {fileID: 0}
@@ -276,7 +370,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 99dce9085bbb2c44e9fd4b8b5091625d, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f303360a96c9b5458338c6661fd0eca, type: 2}
     - target: {fileID: 0}
       propertyPath: m_MinVertexDistance
       value: 0
@@ -303,11 +397,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 93e475522cad10e4da22ca83727418df, type: 2}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

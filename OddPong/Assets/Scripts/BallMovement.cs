@@ -5,6 +5,7 @@ public class BallMovement : MonoBehaviour
 {
     public float startSpeed;
     public float speedUpPerSecond = 0.0f;
+    public float rotationSpeed;
     public Text txtBallVel;
 
     public GameObject racquetLeft, racquetRight;
@@ -34,6 +35,9 @@ public class BallMovement : MonoBehaviour
         {
             txtBallVel.text = "X Velocity: " + _rigid.velocity.x;
         }
+        
+		transform.GetChild (1).transform.Rotate(0, Time.deltaTime*rotationSpeed, 0, Space.World);
+		
     }
 
     //Check which section of racquet the ball hits
@@ -115,5 +119,8 @@ public class BallMovement : MonoBehaviour
 
             _rigid.velocity = dir * startSpeed;
         }
+        
+//		Quaternion newrotation = Random.rotation;
+//		transform.rotation = newrotation;
     }
 }
