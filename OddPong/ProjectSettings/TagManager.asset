@@ -9,6 +9,7 @@ TagManager:
   - Ball
   - RandomEvent
   - Pausable Sound
+  - Soundtrack
   layers:
   - Default
   - TransparentFX

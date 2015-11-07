@@ -3,11 +3,15 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Audio;
 
+
+
 public class Intro : MonoBehaviour {
 
     public Text m_selector;
+    private Music m_soundTrack;
 
     void Start () {
+        m_soundTrack = GameObject.FindGameObjectWithTag("Soundtrack").GetComponent<Music>();
     }
 
     void Update() {
@@ -15,6 +19,7 @@ public class Intro : MonoBehaviour {
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Escape))
         {
             if (m_selector.transform.localPosition.y == -44) {
+                m_soundTrack.rememberSong();
                 Application.LoadLevel("Main");
             }
         }
