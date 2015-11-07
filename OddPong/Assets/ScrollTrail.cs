@@ -12,6 +12,6 @@ public class ScrollTrail : MonoBehaviour {
 	{
 		offset.x = start + Time.time * speed;
 		
-		GetComponent<TrailRenderer>().material.mainTextureOffset = offset;
+		GetComponent<Renderer>().material.mainTextureOffset = offset;
 	}
 }

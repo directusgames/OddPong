@@ -6,22 +6,38 @@ public class BallTextureEvent : MonoBehaviour, GameEvent {
 
 	//public float fadeTime, fadeSpeed;
 	public Material originalTrailMat, newTrailMat;
+	public float runTime;
 	
 	private GameObject ball;
+	
+	private float timeRunning;
+	private bool running;
 
 	// Use this for initialization
 	void Start () {
-	
+		
+		timeRunning = 0;
+		running = false;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
+		if(running)
+		{
+			timeRunning += Time.deltaTime;
+		
+			if(timeRunning > runTime)
+			{
+				StopRandomEvent();
+			}
+		}
 	}
 	
 	public void StartRandomEvent()
 	{
+		running = true;
 		Debug.Log ("Ball event started");
 		
 		ball = GameObject.FindGameObjectWithTag("Ball");
@@ -48,7 +64,8 @@ public class BallTextureEvent : MonoBehaviour, GameEvent {
 	public void StopRandomEvent()
 	{
 		ball.transform.GetChild(0).GetComponent<Renderer>().material = originalTrailMat;
-		ball.transform.GetChild (1).gameObject.SetActive(false);
+		ball.transform.GetChild(1).gameObject.SetActive(false);
+		running = false;
 	}
 	
 //	public void EffectOn()
