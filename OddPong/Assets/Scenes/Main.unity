@@ -580,7 +580,7 @@ GameObject:
   - 114: {fileID: 269389841}
   m_Layer: 0
   m_Name: Black Hole
-  m_TagString: Untagged
+  m_TagString: RandomEvent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1926,7 +1926,7 @@ Transform:
   - {fileID: 495732405}
   - {fileID: 1204466867}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!4 &992970904
 Transform:
   m_ObjectHideFlags: 0
@@ -2356,6 +2356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalTrailMat: {fileID: 2100000, guid: 99dce9085bbb2c44e9fd4b8b5091625d, type: 2}
   newTrailMat: {fileID: 2100000, guid: 7f303360a96c9b5458338c6661fd0eca, type: 2}
+  runTime: 5
 --- !u!1 &1241116492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,7 +3365,7 @@ Transform:
   m_LocalScale: {x: 750, y: 449.469543, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &1592961074
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class BlackholeTwirl : MonoBehaviour {
         GetComponent<RectTransform>().Rotate(
             m_rotation.x,
             m_rotation.y,
-            m_rotation.z += 0.01f
+            m_rotation.z -= 0.01f
         );
     }
 }
