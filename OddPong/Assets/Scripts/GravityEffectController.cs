@@ -33,6 +33,7 @@ public class GravityEffectController : MonoBehaviour {
 	public void EffectOff()
 	{
 		InvokeRepeating("FadeOut",0,fadeTime);
+		CancelInvoke ("FadeIn");
 	}
 	
 	void FadeIn()

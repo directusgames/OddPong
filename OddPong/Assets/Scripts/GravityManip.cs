@@ -32,6 +32,7 @@ public class GravityManip : MonoBehaviour, GameEvent  {
         if(m_gravity == m_strongLeft)
         {
 			gravEffectLeft.GetComponent<GravityEffectController>().EffectOff ();
+			Debug.Log ("Turning off");
         }
         else
         {
