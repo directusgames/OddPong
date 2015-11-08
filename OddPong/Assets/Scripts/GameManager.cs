@@ -148,7 +148,6 @@ public class GameManager : MonoBehaviour
         	{
 				alertMgr.GetComponent<AlertManager>().ShowAlert("BALL SPEED INCREASE");
 				warningGiven = true;
-				Debug.Log ("Triggered warning");
         	}
         	
         	if(intervalTime > ballSpeedIncreaseInterval)

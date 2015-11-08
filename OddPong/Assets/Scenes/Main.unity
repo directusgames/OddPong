@@ -292,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &86552877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -307,8 +307,8 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -1.52587891e-05, y: -215.990204}
-  m_SizeDelta: {x: 359, y: 40.4199982}
+  m_AnchoredPosition: {x: -.499993324, y: -215.980209}
+  m_SizeDelta: {x: 279, y: 40.4000015}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &86552878
 MonoBehaviour:
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 86552876}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -331,7 +331,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: afa35fd03a511624f827069120c42bef, type: 3}
-    m_FontSize: 33
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -653,7 +653,7 @@ GameObject:
   - 114: {fileID: 269389841}
   m_Layer: 0
   m_Name: Black Hole
-  m_TagString: Untagged
+  m_TagString: RandomEvent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1478,7 +1478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtAlert: {fileID: 86552878}
   alertSound: {fileID: 929790214}
-  lifetime: 2
+  lifetime: 1
   repeatTime: .200000003
 --- !u!4 &798511192
 Transform:
@@ -2633,7 +2633,7 @@ GameObject:
   - 114: {fileID: 1204466868}
   m_Layer: 0
   m_Name: Ball Texture Change
-  m_TagString: Untagged
+  m_TagString: RandomEvent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

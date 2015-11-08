@@ -10,6 +10,8 @@ public class GravityManip : MonoBehaviour, GameEvent  {
     // Forces player to play 'keepuppy' with themselves.
     private Vector2 m_strongLeft = new Vector2(-40, 0);
     private Vector2 m_strongRight = new Vector2(40, 0);
+    
+    private GameObject alertMgr;
 
     public float m_animateTime; // Gravity interval in seconds.
     public float m_prevTime; // Start time to measure against current time.
@@ -45,28 +47,15 @@ public class GravityManip : MonoBehaviour, GameEvent  {
     // Set up event, which Update() then performs the rest of.
     public void StartRandomEvent()
     {
-        m_ballManager.GravBalls(); // Allow ball to experience gravity.
-        m_prevTime = Time.fixedTime;
-        m_gravitySound.Play();
-        m_running = true;
-
-        // Randomise initial side of gravity.
-        float rand = Random.Range(0.0f, 1.0f);
-        if (rand <= 0.5f)
-        {
-            m_gravity = m_strongLeft;
-            gravEffectLeft.GetComponent<GravityEffectController>().EffectOn();
-        }
-        else
-        {
-            m_gravity = m_strongRight;
-            gravEffectRight.GetComponent<GravityEffectController>().EffectOn();
-        }
+       Invoke ("StartGravityEffect", 1.5f);
+       alertMgr.GetComponent<AlertManager>().ShowAlert("HORIZONTAL GRAVITY");
+       
     }
 
     void Start()
     {
         m_gravitySound.FadeTime = m_animateTime;
+        alertMgr = GameObject.Find ("AlertManager");
     }
 
     void Update()
@@ -87,5 +76,26 @@ public class GravityManip : MonoBehaviour, GameEvent  {
                 }
             }
         }
+    }
+    
+    void StartGravityEffect()
+    {
+		m_ballManager.GravBalls(); // Allow ball to experience gravity.
+		m_prevTime = Time.fixedTime;
+		m_gravitySound.Play();
+		m_running = true;
+		
+		// Randomise initial side of gravity.
+		float rand = Random.Range(0.0f, 1.0f);
+		if (rand <= 0.5f)
+		{
+			m_gravity = m_strongLeft;
+			gravEffectLeft.GetComponent<GravityEffectController>().EffectOn();
+		}
+		else
+		{
+			m_gravity = m_strongRight;
+			gravEffectRight.GetComponent<GravityEffectController>().EffectOn();
+		}
     }
 }
