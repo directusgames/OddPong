@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
 
     public BallManager m_ballManager;
     public float m_initialBallSpeed;
+    
+    public float roundTime;
+    public float ballSpeedIncreaseTime; //How long a round should go for until the ball starts increasing in speed
+    public float ballSpeedIncreaseInterval; //How long between increases
+    public float intervalTime;
+    public float ballSpeedIncreaseAmount; //How much to increase each time
 
     public int m_maxScore;
     public Text m_outputText;
@@ -47,14 +53,15 @@ public class GameManager : MonoBehaviour
     {
         p1Controller.reset();
         p2Controller.reset();
-        m_outputText.text = "";
-        DoBallSpawn(); // Spawn ball after count down.
+        startRound ();
     }
 
     void startRound()
     {
         m_outputText.text = "";
         DoBallSpawn();
+        roundTime = 0;
+        
     }
 
     public void playerScores(string player)
@@ -98,6 +105,8 @@ public class GameManager : MonoBehaviour
     {
         if (!m_matchCooldown) // Game is ongoing.
         {
+        	roundTime = roundTime + Time.deltaTime;
+        	
             if (m_roundCooldown) // Round is in cooldown.
             {
                 var roundDiff = System.Math.Abs(m_roundCooldownPrev - Time.fixedTime);
@@ -123,5 +132,24 @@ public class GameManager : MonoBehaviour
                 //dark 0.17
             }
         }
+        
+        if(roundTime > ballSpeedIncreaseTime)
+        {
+        	if(intervalTime > ballSpeedIncreaseInterval)
+        	{
+        		intervalTime = 0;
+        		GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+        		
+        		foreach(GameObject ball in balls)
+        		{
+        			ball.GetComponent<BallMovement>().ballSpeed += ballSpeedIncreaseAmount;
+        		}
+        		
+        	}
+        	
+      		intervalTime += Time.deltaTime;			      	
+        }
+        
+        roundTime += Time.deltaTime;
     }
 }

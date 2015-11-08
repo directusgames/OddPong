@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e0c870916255f44b330bdba51e1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 450
+  ballSpeed: 450
   speedUpPerSecond: 0
   rotationSpeed: 250
   txtBallVel: {fileID: 0}
@@ -422,6 +422,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ballSpeed
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

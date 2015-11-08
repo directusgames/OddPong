@@ -2902,6 +2902,11 @@ MonoBehaviour:
   soundWinRound: {fileID: 80984904}
   m_ballManager: {fileID: 827787784}
   m_initialBallSpeed: 350
+  roundTime: 0
+  ballSpeedIncreaseTime: 45
+  ballSpeedIncreaseInterval: 2
+  intervalTime: 0
+  ballSpeedIncreaseAmount: 10
   m_maxScore: 5
   m_outputText: {fileID: 314837799}
   m_startGame: 0

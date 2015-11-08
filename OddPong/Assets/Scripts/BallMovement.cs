@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 using UnityEngine.UI;
 
 public class BallMovement : MonoBehaviour
 {
-    public float startSpeed;
+    public float ballSpeed;
     public float speedUpPerSecond = 0.0f;
     public float rotationSpeed;
     public Text txtBallVel;
@@ -23,7 +23,7 @@ public class BallMovement : MonoBehaviour
         }
         if (speedUpPerSecond <= 0.0f)
         {
-            speedUpPerSecond = startSpeed;
+            speedUpPerSecond = ballSpeed;
         }
         _hitSound = GetComponent<AudioSource>();
         _rigid = GetComponent<Rigidbody2D>();
@@ -59,7 +59,7 @@ public class BallMovement : MonoBehaviour
         if (_raiseSpeed)
         {
             float speed = _rigid.velocity.magnitude;
-            if (speed < startSpeed)
+			if (speed < ballSpeed)
             {
                 float increase = speed + Time.fixedDeltaTime * speedUpPerSecond;
                 // Manually normalise, because Vector2D.Normalize() doesn't do anything???
@@ -99,7 +99,7 @@ public class BallMovement : MonoBehaviour
             {
                 dir = new Vector2(-1, y).normalized;
             }
-            _rigid.velocity = dir * startSpeed;
+			_rigid.velocity = dir * ballSpeed;
         }
         else if (col.gameObject.name == racquetRight.name)
         {
@@ -117,7 +117,7 @@ public class BallMovement : MonoBehaviour
                 dir = new Vector2(1, y).normalized;
             }
 
-            _rigid.velocity = dir * startSpeed;
+			_rigid.velocity = dir * ballSpeed;
         }
         
 //		Quaternion newrotation = Random.rotation;
