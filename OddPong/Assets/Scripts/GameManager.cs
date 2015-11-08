@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     public float m_initialBallSpeed;
 
     public int m_maxScore;
-    public Text m_outputText;
+    public Text m_countdown;
+    public Text m_winner;
 
     public bool m_startGame;
 
@@ -41,19 +42,22 @@ public class GameManager : MonoBehaviour
 
         // Randomly pick who was the previous 'winner' so we have a starting point.
         m_lastWinnerPosition = (Random.Range(0.0f, 1.0f) >= 0.5f) ? p1Controller.transform.position : p2Controller.transform.position;
+        m_matchCooldownPrev = Time.fixedTime;
     }
 
     void startGame()
     {
         p1Controller.reset();
         p2Controller.reset();
-        m_outputText.text = "";
+        m_countdown.text = "";
+        m_winner.text = "";
         DoBallSpawn(); // Spawn ball after count down.
     }
 
     void startRound()
     {
-        m_outputText.text = "";
+        m_countdown.text = "";
+        m_winner.text = "";
         DoBallSpawn();
     }
 
@@ -66,14 +70,14 @@ public class GameManager : MonoBehaviour
 
         if (p1Controller.m_score >= m_maxScore || p2Controller.m_score >= m_maxScore)
         {
-            m_outputText.text = player + " wins!";
+            m_winner.text = player + " wins!";
             m_matchCooldownPrev = Time.fixedTime;
             m_matchCooldown = true;
             soundWinGame.Play();
         }
         else
         {
-            m_outputText.text = player + " scores!";
+            m_winner.text = player + " scores!";
             m_roundCooldownPrev = Time.fixedTime;
             m_roundCooldown = true;
             soundWinRound.Play();
@@ -111,16 +115,15 @@ public class GameManager : MonoBehaviour
         else // Game is in cooldown.
         {
             var matchDiff = System.Math.Abs(m_matchCooldownPrev - Time.fixedTime);
-            m_outputText.enabled = true;
+            m_countdown.enabled = true;
             if (matchDiff >= m_matchCooldownLength)
             {
+                m_countdown.enabled = false;
                 startGame();
                 m_matchCooldown = false;
                 m_startGame = false;
-                // appre 0.253
-                //saw 0.1
-                //visager airship 0.1
-                //dark 0.17
+            } else { // The time interval is less than the required.
+                m_countdown.text = ((int) (m_matchCooldownLength - matchDiff) + 1).ToString();
             }
         }
     }

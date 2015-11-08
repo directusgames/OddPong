@@ -6,17 +6,10 @@ public class Music : MonoBehaviour
     public AudioSource[] m_soundtrack;
     public AudioSource m_track;
 
-    public Text m_prefixText;
     public Text m_outputText;
-
-    // Maximum left;
-    public float m_textResetX = -850f;
-    // Maximum right;
-    public float m_textBeginX = 505f;
-
-    public string m_outputPrefix;
-    private string m_defaultPrefix = "Track: ";
-
+    public float m_textResetX = -850f; // Maximum left;
+    public float m_textBeginX = 505f; // Maximum right;
+    public string m_outputPrefix = "Track: ";
     public bool m_playOnAwake;
     private bool m_play;
 
@@ -52,11 +45,9 @@ public class Music : MonoBehaviour
     private void playTrack() {
         // If playable.
         if (m_track.isActiveAndEnabled) {
-            m_prefixText.text = m_outputPrefix;
-            m_outputText.text = m_track.name;
+            m_outputText.text = m_outputPrefix + m_track.name;
             m_track.Play();
         } else {
-            m_prefixText.text = "";
             m_outputText.text = "Error loading file: " + m_track.name;
         }
         // Show text with song/track name or with error.
@@ -66,7 +57,6 @@ public class Music : MonoBehaviour
     void Start() {
         // Ensure we get a chance to clear the text before displaying.
         m_outputText.enabled = false;
-        m_outputPrefix = string.IsNullOrEmpty(m_outputPrefix) ? m_defaultPrefix : m_outputPrefix;
 
         // Play on awake / start.
         if (m_playOnAwake) {
