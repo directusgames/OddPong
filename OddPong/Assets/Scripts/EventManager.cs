@@ -7,6 +7,7 @@ public class EventManager : MonoBehaviour {
 
     // Private GameEvent array of all random events.
     private List<GameEvent> m_randomEvents;
+    private GameObject[] gameSounds;
 
     // The round time before using an effect.
     public float m_timeBeforeEffects = 10f;
@@ -24,6 +25,8 @@ public class EventManager : MonoBehaviour {
             m_randomEvents.Add(match.GetComponent<GameEvent>());
         }
         m_effectTimePrev = Time.fixedTime;
+        
+        gameSounds = GameObject.FindGameObjectsWithTag("Pausable Sound");
     }
 
     void Update () {
@@ -58,6 +61,19 @@ public class EventManager : MonoBehaviour {
                 }
             }
         }
+    }
+    
+    public void StopAllEvents()
+    {
+    	foreach(GameEvent ge in m_randomEvents)
+    	{
+    		ge.StopRandomEvent();
+    	}
+    	
+    	foreach(GameObject sound in gameSounds)
+    	{
+    		sound.GetComponent<AudioSource>().Stop ();
+    	} 	
     }
 }
 

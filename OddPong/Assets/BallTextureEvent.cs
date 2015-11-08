@@ -43,12 +43,14 @@ public class BallTextureEvent : MonoBehaviour, GameEvent {
 	{
 		Invoke("ChangeTexture", 1.5f);
 		alertMgr.GetComponent<AlertManager>().ShowAlert("INVISIBALL");
+		timeRunning = 0;
 			
 		
 	}
 	
 	public void StopRandomEvent()
 	{
+		Debug.Log ("Ball event stopped");
 		if(ball != null)
 		{
 			ball.transform.GetChild(0).GetComponent<Renderer>().material = originalTrailMat;
@@ -58,7 +60,7 @@ public class BallTextureEvent : MonoBehaviour, GameEvent {
 		else
 		{
 			running = false;
-		}
+		}	
 	}
 	
 	void ChangeTexture()

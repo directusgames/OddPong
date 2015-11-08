@@ -189,7 +189,7 @@ GameObject:
   - 82: {fileID: 80984904}
   m_Layer: 0
   m_Name: Round Win Sound
-  m_TagString: Pausable Sound
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

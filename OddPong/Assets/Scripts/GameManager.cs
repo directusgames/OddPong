@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private Player p1Controller;
     private Player p2Controller;
+    
+    private GameObject eventMgr;
 
     public BallManager m_ballManager;
     public float m_initialBallSpeed;
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
         warningGiven = false;
         
         alertMgr = GameObject.Find ("AlertManager");
+        eventMgr = GameObject.Find ("Eventmanager");
     }
 
     void startGame()
@@ -94,6 +97,8 @@ public class GameManager : MonoBehaviour
             m_roundCooldown = true;
             soundWinRound.Play();
         }
+        
+        eventMgr.GetComponent<EventManager>().StopAllEvents();
     }
 
     void DoBallSpawn()
