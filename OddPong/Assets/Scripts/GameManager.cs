@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public float ballSpeedIncreaseInterval; //How long between increases
     public float intervalTime;
     public float ballSpeedIncreaseAmount; //How much to increase each time
+    
+    private bool warningGiven;
+    private GameObject alertMgr;
 
     public int m_maxScore;
     public Text m_outputText;
@@ -47,6 +50,11 @@ public class GameManager : MonoBehaviour
 
         // Randomly pick who was the previous 'winner' so we have a starting point.
         m_lastWinnerPosition = (Random.Range(0.0f, 1.0f) >= 0.5f) ? p1Controller.transform.position : p2Controller.transform.position;
+        
+        //Has an alert been sounded for ball increase?
+        warningGiven = false;
+        
+        alertMgr = GameObject.Find ("AlertManager");
     }
 
     void startGame()
@@ -61,6 +69,7 @@ public class GameManager : MonoBehaviour
         m_outputText.text = "";
         DoBallSpawn();
         roundTime = 0;
+        warningGiven = false;
         
     }
 
@@ -135,6 +144,13 @@ public class GameManager : MonoBehaviour
         
         if(roundTime > ballSpeedIncreaseTime)
         {
+        	if(!warningGiven)
+        	{
+				alertMgr.GetComponent<AlertManager>().ShowAlert("BALL SPEED INCREASE");
+				warningGiven = true;
+				Debug.Log ("Triggered warning");
+        	}
+        	
         	if(intervalTime > ballSpeedIncreaseInterval)
         	{
         		intervalTime = 0;
@@ -151,5 +167,6 @@ public class GameManager : MonoBehaviour
         }
         
         roundTime += Time.deltaTime;
-    }
+    }    
+
 }

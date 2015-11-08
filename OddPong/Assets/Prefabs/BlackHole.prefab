@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   massInfluence: 2
-  attractionPower: 2.5
+  attractionPower: 2
   matchThisTag: Ball
 --- !u!114 &11497626
 MonoBehaviour:
@@ -308,7 +308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attractionPower
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
