@@ -70,7 +70,7 @@ public class BallTextureEvent : MonoBehaviour, GameEvent {
 		
 		ball = GameObject.FindGameObjectWithTag("Ball");
 		
-		ball.transform.GetChild(0).GetComponent<Renderer>().material = newTrailMat;
-		ball.transform.GetChild (1).gameObject.SetActive(true);
+		ball.transform.GetChild(0).GetComponent<TrailRenderer>().material = newTrailMat;
+		ball.transform.GetChild(1).gameObject.SetActive(true);
 	}
 }

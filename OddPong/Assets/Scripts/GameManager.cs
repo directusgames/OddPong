@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         m_countdown.text = "";
         m_winner.text = "";
         DoBallSpawn(); // Spawn ball after count down.
+        roundTime = 0;
     }
 
     void startRound()
