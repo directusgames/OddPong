@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class BallManager : MonoBehaviour
 {
@@ -12,11 +13,10 @@ public class BallManager : MonoBehaviour
 
     public void SpawnBall(Vector3 position, Vector3 startingVelocity)
     {
-        var spawned = Instantiate(ball);
-        var rigid = spawned.GetComponent<Rigidbody2D>();
+		GameObject spawned = (GameObject)Instantiate(ball, new Vector3(position.x, position.y, -2), Quaternion.identity);
+		Rigidbody2D rigid = spawned.GetComponent<Rigidbody2D>();
         if (rigid)
         {
-            rigid.position = position;
             rigid.velocity = startingVelocity;
             rigid.gravityScale = m_gravityApplies ? m_gravityScale : 0f;
         }
@@ -34,6 +34,7 @@ public class BallManager : MonoBehaviour
         {
             // Debug.LogWarning("Spawned ball but couldn't find ball movement component.");
         }
+        
     }
 
     // Balls that don't heed gravity.
