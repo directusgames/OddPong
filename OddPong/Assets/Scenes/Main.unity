@@ -336,7 +336,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -2055,7 +2055,7 @@ GameObject:
   - 82: {fileID: 929790214}
   m_Layer: 0
   m_Name: Alert Sound
-  m_TagString: Untagged
+  m_TagString: Pausable Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2081,7 +2081,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fdb4d46a8b9bee2439c3546668c57f2c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1b60faabaeac9664186fec74e1b78ac5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2663,7 +2663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalTrailMat: {fileID: 2100000, guid: 99dce9085bbb2c44e9fd4b8b5091625d, type: 2}
   newTrailMat: {fileID: 2100000, guid: 7f303360a96c9b5458338c6661fd0eca, type: 2}
-  runTime: 5
+  runTime: 8
 --- !u!1 &1241116492
 GameObject:
   m_ObjectHideFlags: 0
