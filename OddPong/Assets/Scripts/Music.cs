@@ -5,7 +5,14 @@ public class Music : MonoBehaviour
 {
     public AudioSource[] m_soundtrack;
     public AudioSource m_track;
-    public Text m_output;
+
+    public Text m_prefixText;
+    public Text m_outputText;
+
+    // Maximum left;
+    public float m_textResetX = -850f;
+    // Maximum right;
+    public float m_textBeginX = 505f;
 
     public string m_outputPrefix;
     private string m_defaultPrefix = "Track: ";
@@ -45,18 +52,20 @@ public class Music : MonoBehaviour
     private void playTrack() {
         // If playable.
         if (m_track.isActiveAndEnabled) {
-            m_output.text = m_outputPrefix + m_track.name;
+            m_prefixText.text = m_outputPrefix;
+            m_outputText.text = m_track.name;
             m_track.Play();
         } else {
-            m_output.text = "Error loading file: " + m_track.name;
+            m_prefixText.text = "";
+            m_outputText.text = "Error loading file: " + m_track.name;
         }
         // Show text with song/track name or with error.
-        m_output.enabled = true;
+        m_outputText.enabled = true;
     }
 
     void Start() {
         // Ensure we get a chance to clear the text before displaying.
-        m_output.enabled = false;
+        m_outputText.enabled = false;
         m_outputPrefix = string.IsNullOrEmpty(m_outputPrefix) ? m_defaultPrefix : m_outputPrefix;
 
         // Play on awake / start.
@@ -78,6 +87,23 @@ public class Music : MonoBehaviour
     {
         if (m_play && m_track && !m_track.isPlaying) {
             selectRandom();
+        }
+        // Animate playing text.
+        if (m_play && m_track && m_track.isPlaying) {
+            // Gone too far out, reset text position to right handside.
+            if (m_outputText.transform.localPosition.x < m_textResetX) {
+                m_outputText.transform.localPosition = new Vector3(
+                    m_textBeginX, 
+                    m_outputText.transform.localPosition.y,
+                    m_outputText.transform.localPosition.z
+                );
+            } else {
+                m_outputText.transform.localPosition = new Vector3(
+                    m_outputText.transform.localPosition.x - 1,
+                    m_outputText.transform.localPosition.y,
+                    m_outputText.transform.localPosition.z
+                );
+            }
         }
     }
 }
